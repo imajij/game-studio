@@ -31,6 +31,22 @@ const RADII: Array[float] = [
 ## (triangular numbers — higher tiers pay much more).
 const POINTS: Array[int] = [0, 0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55]
 
+## One-line Goofdex bios, shown on the first-discovery card.
+const BIOS: Array[String] = [
+	"",
+	"Blinks twice a day. Both blinks are important.",
+	"One monocle, zero crumbs out of place. Judging you.",
+	"Knows where your missing socks went. Won't tell.",
+	"Sees your future. It's buttered.",
+	"Flaky on the outside. Emotionally? Also flaky.",
+	"Royalty, technically. The jar is his kingdom.",
+	"Peels rules apart. Wears shades indoors.",
+	"Hums at 3 AM. Chills, therefore it is.",
+	"Attends every meeting. Says nothing. Promoted anyway.",
+	"Remembers when all this was empty space.",
+	"The pea at the end of the universe. Still blinking.",
+]
+
 ## Character art (1-indexed like the other tables; index 0 is padding).
 const TEXTURES: Array[Texture2D] = [
 	null,

@@ -90,9 +90,11 @@ radius (`Creature.SPRITE_DIAMETER_FACTOR`).
 ## Milestones
 1. **Greybox (done)** — colored circles with tier numbers, physics, drag/drop,
    merging, scoring, danger line (2 s), game over, instant restart, high score.
-2. **Discovery & juice** — "NEW GOOF UNLOCKED" first-discovery card with funny
-   one-line bios, Goofdex collection screen with silhouettes for undiscovered
-   tiers, placeholder sounds, screen shake + particles on merge.
+2. **Discovery & juice (done 2026-10-26)** — "NEW GOOF UNLOCKED" card
+   (pauses, tap to continue; bios in `tiers.gd`), GOOFDEX button + collection
+   screen with silhouettes (`goofdex.discovered` in save), synthesized
+   placeholder sounds in `assets/audio/` (replace in M3), camera shake +
+   tier-colored particle burst + pitched pop per merge (deeper = bigger).
 3. **Art & audio pass** — final flat-cartoon art, final sounds + music.
 4. **Ads** — via AdsManager as listed above.
 5. **Release prep** — docs/release-checklist.md, privacy policy, store listing,

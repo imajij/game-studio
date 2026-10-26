@@ -18,6 +18,14 @@ const DANGER_Y: float = 560.0
 
 const DROP_COOLDOWN_SEC: float = 0.45
 const DANGER_SECONDS: float = 2.0
+const SHAKE_DECAY_PER_SEC: float = 9.0
+const SHAKE_MAX_PX: float = 30.0
+
+const SFX_DROP: AudioStream = preload("res://assets/audio/drop.wav")
+const SFX_POP: AudioStream = preload("res://assets/audio/pop.wav")
+const SFX_TAP: AudioStream = preload("res://assets/audio/tap.wav")
+const SFX_DANGER: AudioStream = preload("res://assets/audio/danger.wav")
+const SFX_GAME_OVER: AudioStream = preload("res://assets/audio/game_over.wav")
 ## Ignore taps right after game over so the losing tap can't instantly restart.
 const RESTART_LOCKOUT_SEC: float = 0.6
 ## Upward kick (per kg) for a freshly merged creature — the "pop".
@@ -31,6 +39,7 @@ var pending: Creature = null
 var game_over_at_sec: float = 0.0
 var revive_used: bool = false
 var restarting: bool = false
+var shake_strength: float = 0.0
 
 @onready var jar: Jar = $Jar
 @onready var danger_line: DangerLine = $DangerLine
@@ -43,9 +52,15 @@ var restarting: bool = false
 @onready var final_score_label: Label = $UI/GameOverPanel/FinalScore
 @onready var revive_button: Button = $UI/GameOverPanel/ReviveButton
 @onready var shake_button: Button = $UI/ShakeButton
+@onready var goofdex_button: Button = $UI/GoofdexButton
+@onready var camera: Camera2D = $Camera
+@onready var goofdex: Goofdex = $Goofdex
+@onready var discovery_card: DiscoveryCard = $DiscoveryCard
 
 func _ready() -> void:
 	randomize()
+	camera.make_current()
+	goofdex_button.pressed.connect(goofdex.open)
 	jar.build(JAR_LEFT, JAR_RIGHT, JAR_WALL_TOP, JAR_FLOOR_Y)
 	danger_line.position = Vector2(0.0, DANGER_Y)
 	danger_line.build(JAR_LEFT, JAR_RIGHT)
@@ -59,6 +74,17 @@ func _ready() -> void:
 	Analytics.log_event("round_start")
 	next_tier = _roll_drop_tier()
 	_spawn_pending()
+
+
+func _process(delta: float) -> void:
+	if shake_strength > 0.3:
+		shake_strength = maxf(shake_strength - shake_strength * SHAKE_DECAY_PER_SEC * delta, 0.0)
+		camera.offset = Vector2(
+			randf_range(-shake_strength, shake_strength),
+			randf_range(-shake_strength, shake_strength))
+	else:
+		shake_strength = 0.0
+		camera.offset = Vector2.ZERO
 
 
 func _physics_process(delta: float) -> void:
@@ -77,6 +103,8 @@ func _physics_process(delta: float) -> void:
 				return
 		else:
 			creature.danger_time = 0.0
+	if any_in_danger and not danger_line.armed:
+		AudioManager.play_sfx(SFX_DANGER)
 	danger_line.armed = any_in_danger
 	# Opt-in rewarded shake: only offered while playing and an ad is loaded.
 	shake_button.visible = AdsManager.is_rewarded_ready()
@@ -129,6 +157,8 @@ func _drop() -> void:
 	pending = null
 	dropped.freeze = false
 	Haptics.light()
+	AudioManager.play_sfx(SFX_DROP, 0.08)
+	_mark_discovered(dropped.tier)
 	drop_timer.start(DROP_COOLDOWN_SEC)
 
 
@@ -185,6 +215,10 @@ func _merge(a: Creature, b: Creature) -> void:
 	merged.apply_central_impulse(Vector2.UP * MERGE_POP_IMPULSE * merged.mass)
 	merged.pop_in()
 	Haptics.medium()
+	AudioManager.play_sfx(SFX_POP, 0.04, 1.35 - 0.055 * new_tier)
+	_add_shake(1.5 + 1.1 * new_tier)
+	_spawn_merge_burst(mid, new_tier)
+	_mark_discovered(new_tier)
 	score += Tiers.POINTS[new_tier]
 	if score > high_score:
 		high_score = score
@@ -206,6 +240,8 @@ func _game_over() -> void:
 	Analytics.log_event("game_over", {"score": score})
 	AdsManager.round_finished()
 	Haptics.heavy()
+	AudioManager.play_sfx(SFX_GAME_OVER)
+	_add_shake(14.0)
 	shake_button.visible = false
 	final_score_label.text = "SCORE %d\nBEST %d" % [score, high_score]
 	revive_button.visible = not revive_used and AdsManager.is_rewarded_ready()
@@ -217,12 +253,14 @@ func _game_over() -> void:
 func _on_revive_pressed() -> void:
 	if state != State.GAME_OVER or revive_used:
 		return
+	AudioManager.play_sfx(SFX_TAP)
 	AdsManager.show_rewarded("revive")
 
 
 func _on_shake_pressed() -> void:
 	if state != State.PLAYING:
 		return
+	AudioManager.play_sfx(SFX_TAP)
 	get_tree().paused = true
 	AdsManager.show_rewarded("shake")
 
@@ -269,6 +307,44 @@ func _apply_shake() -> void:
 			Vector2(randf_range(-120.0, 120.0), -randf_range(220.0, 420.0)) * creature.mass)
 	Analytics.log_event("shake_used")
 	Haptics.heavy()
+
+
+# --- juice & goofdex --------------------------------------------------------
+
+func _add_shake(amount: float) -> void:
+	shake_strength = minf(shake_strength + amount, SHAKE_MAX_PX)
+
+
+func _spawn_merge_burst(at: Vector2, tier: int) -> void:
+	var burst := CPUParticles2D.new()
+	burst.position = at
+	burst.one_shot = true
+	burst.emitting = true
+	burst.amount = 12 + tier * 2
+	burst.lifetime = 0.5
+	burst.explosiveness = 1.0
+	burst.spread = 180.0
+	burst.gravity = Vector2(0.0, 700.0)
+	burst.initial_velocity_min = 240.0
+	burst.initial_velocity_max = 420.0 + tier * 25.0
+	burst.scale_amount_min = 4.0
+	burst.scale_amount_max = 8.0 + tier
+	burst.color = Tiers.COLORS[tier]
+	add_child(burst)
+	burst.finished.connect(burst.queue_free)
+
+
+func _mark_discovered(tier: int) -> void:
+	# duplicate() matters: SaveManager skips the write if handed the same
+	# array reference it already stores.
+	var found: Array = (SaveManager.get_value(Goofdex.DISCOVERED_KEY, []) as Array).duplicate()
+	for value in found:
+		if int(value) == tier:
+			return
+	found.append(tier)
+	SaveManager.set_value(Goofdex.DISCOVERED_KEY, found)
+	Analytics.log_event("goof_discovered", {"tier": tier})
+	discovery_card.enqueue(tier)
 
 
 # --- ui --------------------------------------------------------------------

@@ -14,6 +14,8 @@ var _sfx_players: Array[AudioStreamPlayer] = []
 var _next_sfx: int = 0
 
 func _ready() -> void:
+	# Sounds keep playing through pause overlays (discovery cards, ads).
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_make_bus(BUS_MUSIC)
 	_make_bus(BUS_SFX)
 	_music_player = AudioStreamPlayer.new()
@@ -44,14 +46,14 @@ func stop_music() -> void:
 
 
 ## pitch_jitter (0.0–0.3) randomises pitch a little so repeated sounds
-## don't grate — cheap juice.
-func play_sfx(stream: AudioStream, pitch_jitter: float = 0.0) -> void:
+## don't grate; pitch_base shifts the whole sound (e.g. deeper per tier).
+func play_sfx(stream: AudioStream, pitch_jitter: float = 0.0, pitch_base: float = 1.0) -> void:
 	if stream == null:
 		return
 	var player := _sfx_players[_next_sfx]
 	_next_sfx = (_next_sfx + 1) % SFX_POOL_SIZE
 	player.stream = stream
-	player.pitch_scale = 1.0 + randf_range(-pitch_jitter, pitch_jitter)
+	player.pitch_scale = pitch_base + randf_range(-pitch_jitter, pitch_jitter)
 	player.play()
 
 
