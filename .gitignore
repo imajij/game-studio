@@ -22,3 +22,4 @@ export_credentials.cfg
 google-services*.json
 *service-account*.json
 ads_config.local.cfg
+override.cfg
