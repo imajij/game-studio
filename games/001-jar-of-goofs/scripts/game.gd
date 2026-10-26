@@ -29,6 +29,8 @@ var high_score: int = 0
 var next_tier: int = 1
 var pending: Creature = null
 var game_over_at_sec: float = 0.0
+var revive_used: bool = false
+var restarting: bool = false
 
 @onready var jar: Jar = $Jar
 @onready var danger_line: DangerLine = $DangerLine
@@ -39,6 +41,8 @@ var game_over_at_sec: float = 0.0
 @onready var next_preview: NextPreview = $UI/NextPreview
 @onready var game_over_panel: Control = $UI/GameOverPanel
 @onready var final_score_label: Label = $UI/GameOverPanel/FinalScore
+@onready var revive_button: Button = $UI/GameOverPanel/ReviveButton
+@onready var shake_button: Button = $UI/ShakeButton
 
 func _ready() -> void:
 	randomize()
@@ -46,6 +50,11 @@ func _ready() -> void:
 	danger_line.position = Vector2(0.0, DANGER_Y)
 	danger_line.build(JAR_LEFT, JAR_RIGHT)
 	drop_timer.timeout.connect(_on_drop_timer_timeout)
+	revive_button.pressed.connect(_on_revive_pressed)
+	shake_button.pressed.connect(_on_shake_pressed)
+	AdsManager.rewarded_earned.connect(_on_rewarded_earned)
+	AdsManager.rewarded_closed.connect(_on_rewarded_closed)
+	AdsManager.rewarded_unavailable.connect(_on_rewarded_closed)
 	high_score = int(SaveManager.get_value(HIGH_SCORE_KEY, 0))
 	Analytics.log_event("round_start")
 	next_tier = _roll_drop_tier()
@@ -69,6 +78,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			creature.danger_time = 0.0
 	danger_line.armed = any_in_danger
+	# Opt-in rewarded shake: only offered while playing and an ad is loaded.
+	shake_button.visible = AdsManager.is_rewarded_ready()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -98,8 +109,13 @@ func _handle_game_over_input(event: InputEvent) -> void:
 	var touch := event as InputEventScreenTouch
 	if touch == null or not touch.pressed:
 		return
-	if _now_sec() - game_over_at_sec < RESTART_LOCKOUT_SEC:
+	if restarting or _now_sec() - game_over_at_sec < RESTART_LOCKOUT_SEC:
 		return
+	restarting = true
+	# Natural break: the player declined the revive and is leaving the round.
+	# AdsManager enforces the frequency caps (round count + time between).
+	if AdsManager.maybe_show_interstitial():
+		await AdsManager.interstitial_closed
 	get_tree().reload_current_scene()
 
 
@@ -190,8 +206,69 @@ func _game_over() -> void:
 	Analytics.log_event("game_over", {"score": score})
 	AdsManager.round_finished()
 	Haptics.heavy()
+	shake_button.visible = false
 	final_score_label.text = "SCORE %d\nBEST %d" % [score, high_score]
+	revive_button.visible = not revive_used and AdsManager.is_rewarded_ready()
 	game_over_panel.visible = true
+
+
+# --- rewarded ads -----------------------------------------------------------
+
+func _on_revive_pressed() -> void:
+	if state != State.GAME_OVER or revive_used:
+		return
+	AdsManager.show_rewarded("revive")
+
+
+func _on_shake_pressed() -> void:
+	if state != State.PLAYING:
+		return
+	get_tree().paused = true
+	AdsManager.show_rewarded("shake")
+
+
+func _on_rewarded_earned(reward_type: String) -> void:
+	match reward_type:
+		"revive":
+			_do_revive()
+		"shake":
+			_apply_shake()
+
+
+func _on_rewarded_closed() -> void:
+	get_tree().paused = false
+
+
+## Revive reward: clear the top third of the jar and resume the round.
+func _do_revive() -> void:
+	if state != State.GAME_OVER:
+		return
+	revive_used = true
+	var cutoff := JAR_WALL_TOP + (JAR_FLOOR_Y - JAR_WALL_TOP) / 3.0
+	for node in creatures.get_children():
+		var creature := node as Creature
+		if creature == null:
+			continue
+		creature.danger_time = 0.0
+		if creature.global_position.y - creature.radius < cutoff:
+			creature.queue_free()
+	state = State.PLAYING
+	game_over_panel.visible = false
+	Analytics.log_event("revive_used")
+	Haptics.medium()
+	_spawn_pending()
+
+
+## Shake reward: kick every settled creature so tall stacks resettle.
+func _apply_shake() -> void:
+	for node in creatures.get_children():
+		var creature := node as Creature
+		if creature == null or creature.freeze:
+			continue
+		creature.apply_central_impulse(
+			Vector2(randf_range(-120.0, 120.0), -randf_range(220.0, 420.0)) * creature.mass)
+	Analytics.log_event("shake_used")
+	Haptics.heavy()
 
 
 # --- ui --------------------------------------------------------------------

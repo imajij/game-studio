@@ -46,13 +46,27 @@ collection as a second axis.
 Gravity 3000, bounce 0.2, friction 0.8, merge pop impulse 220/kg, merge pop
 scale 0.4→1.0 TRANS_BACK 0.25 s, mass ∝ radius². Retune after phone feel test.
 
-## Ad placements (Milestone 4 — none before that)
-- Rewarded revive (opt-in): clear the top third of the jar, once per round.
-- Rewarded "shake the jar" (opt-in): small physics nudge to settle a stack.
-- Rewarded double coins (opt-in, once coins exist with the Goofdex).
-- Interstitial: after game over only, via AdsManager caps (never first 2
-  rounds, ≥150 s apart).
-- Banner: menu / Goofdex screens only. Never during gameplay.
+## Ad placements (Milestone 4 — implemented 2026-10-26)
+- Rewarded revive (opt-in, IN): green button on game over, once per round;
+  clears the top third of the jar and resumes.
+- Rewarded "shake the jar" (opt-in, IN): bottom-left button during play
+  (visible only when an ad is loaded); kicks all creatures to resettle.
+- Rewarded double coins: waits for M2 (no coins yet).
+- Interstitial (IN): fires on the restart tap after game over (so it never
+  pre-empts the revive offer), gated by AdsManager caps (≥3 rounds played,
+  ≥150 s apart).
+- Banner: waits for a menu/Goofdex screen. Never during gameplay.
+
+Plugin: poing-studios godot-admob-plugin v5.1.0 (`addons/admob`, Android
+AARs for Godot 4.7.2 in `addons/admob/android/bin`). Game autoload
+`AdsManager` points at `scripts/admob_adapter.gd`, which extends the shared
+studio_core AdsManager and implements its `_plugin_*` stubs; gradle build is
+required (debug preset uses it too). App ID: plugin's project-setting default
+is Google's TEST app id — set `admob/general/android/app_id` to the real one
+(and real unit ids in `ads_config.local.cfg`) at release. Tree pauses during
+the shake ad; `rewarded_closed` unpauses. Before release: add the UMP
+consent flow (ConsentInformation / ConsentForm, see plugin get-started docs)
+ahead of MobileAds.initialize for GDPR regions.
 
 ## Art style (Milestone 3 — art DONE 2026-10-26, audio pending)
 Flat cartoon sticker style: thick dark-navy outlines, white sticker border,

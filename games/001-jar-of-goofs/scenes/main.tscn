@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
 [ext_resource type="Script" path="res://scripts/jar.gd" id="2_jar"]
@@ -6,6 +6,27 @@
 [ext_resource type="Script" path="res://scripts/next_preview.gd" id="4_preview"]
 [ext_resource type="Texture2D" path="res://assets/art/background.png" id="5_bg"]
 [ext_resource type="FontFile" path="res://assets/fonts/Baloo2.ttf" id="6_font"]
+
+[sub_resource type="StyleBoxFlat" id="btn_navy"]
+bg_color = Color(0.18, 0.15, 0.3, 0.92)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="btn_navy_pressed"]
+bg_color = Color(0.12, 0.1, 0.22, 0.95)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="btn_green"]
+bg_color = Color(0.24, 0.6, 0.38, 0.95)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_game")
@@ -63,6 +84,19 @@ horizontal_alignment = 1
 position = Vector2(940, 180)
 script = ExtResource("4_preview")
 
+[node name="ShakeButton" type="Button" parent="UI"]
+visible = false
+offset_left = 40.0
+offset_top = 1812.0
+offset_right = 330.0
+offset_bottom = 1900.0
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("btn_navy")
+theme_override_styles/hover = SubResource("btn_navy")
+theme_override_styles/pressed = SubResource("btn_navy_pressed")
+text = "SHAKE · AD"
+
 [node name="GameOverPanel" type="Control" parent="UI"]
 visible = false
 anchors_preset = 15
@@ -104,3 +138,16 @@ theme_override_fonts/font = ExtResource("6_font")
 theme_override_font_sizes/font_size = 44
 text = "tap to restart"
 horizontal_alignment = 1
+
+[node name="ReviveButton" type="Button" parent="UI/GameOverPanel"]
+visible = false
+offset_left = 290.0
+offset_top = 1190.0
+offset_right = 790.0
+offset_bottom = 1300.0
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 52
+theme_override_styles/normal = SubResource("btn_green")
+theme_override_styles/hover = SubResource("btn_green")
+theme_override_styles/pressed = SubResource("btn_navy_pressed")
+text = "REVIVE · AD"
