@@ -51,6 +51,7 @@ var top_x: float = PLATFORM_CENTER_X
 
 @onready var camera: Camera2D = $Camera
 @onready var crane: Crane = $Camera/Crane
+@onready var deco: Deco = $Deco
 @onready var blocks: Node2D = $Blocks
 @onready var drop_timer: Timer = $DropTimer
 @onready var score_label: Label = $UI/ScoreLabel
@@ -64,6 +65,8 @@ func _ready() -> void:
 	randomize()
 	camera.make_current()
 	crane.position = CRANE_LOCAL
+	deco.painter = _paint_deco
+	deco.queue_redraw()
 	_build_platform()
 	drop_timer.timeout.connect(_arm_crane)
 	glue_button.pressed.connect(_on_glue_pressed)
@@ -277,8 +280,8 @@ func _now_sec() -> float:
 	return Time.get_ticks_msec() / 1000.0
 
 
-func _draw() -> void:
-	draw_rect(Rect2(PLATFORM_CENTER_X - PLATFORM_WIDTH / 2.0, PLATFORM_TOP_Y,
+func _paint_deco(canvas: CanvasItem) -> void:
+	canvas.draw_rect(Rect2(PLATFORM_CENTER_X - PLATFORM_WIDTH / 2.0, PLATFORM_TOP_Y,
 		PLATFORM_WIDTH, PLATFORM_THICKNESS), Color(0.32, 0.28, 0.42))
-	draw_rect(Rect2(PLATFORM_CENTER_X - PLATFORM_WIDTH / 2.0, PLATFORM_TOP_Y,
+	canvas.draw_rect(Rect2(PLATFORM_CENTER_X - PLATFORM_WIDTH / 2.0, PLATFORM_TOP_Y,
 		PLATFORM_WIDTH, 10.0), Color(1.0, 1.0, 1.0, 0.35))

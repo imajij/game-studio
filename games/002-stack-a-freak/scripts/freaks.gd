@@ -21,5 +21,11 @@ const COLORS: Array[Color] = [
 	Color(0.62, 0.64, 0.70), # The Unit — concrete gray
 ]
 
-## Art pass fills these with Flow stickers; empty = greybox squares w/ eyes.
-const TEXTURES: Array[Texture2D] = []
+const TEXTURES: Array[Texture2D] = [
+	preload("res://assets/art/characters/blobby-greg.png"),
+	preload("res://assets/art/characters/mister-loaf.png"),
+	preload("res://assets/art/characters/angry-flan.png"),
+	preload("res://assets/art/characters/bricked-frog.png"),
+	preload("res://assets/art/characters/stressed-mallow.png"),
+	preload("res://assets/art/characters/the-unit.png"),
+]
