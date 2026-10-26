@@ -1,6 +1,6 @@
 # GAME: Jar of Goofs
 
-- Status: prototype (Milestone 1 greybox)
+- Status: prototype (M1 greybox done; M3 art done early — audio still pending)
 - Package: com.zintara.jar_of_goofs
 - Target audience age: 13+ (general casual audience; not designed for children)
 - Privacy policy URL: (required before release)
@@ -54,9 +54,15 @@ scale 0.4→1.0 TRANS_BACK 0.25 s, mass ∝ radius². Retune after phone feel te
   rounds, ≥150 s apart).
 - Banner: menu / Goofdex screens only. Never during gameplay.
 
-## Art style (Milestone 3)
-Simple, bold, flat cartoon; thick outlines, big faces, 2–3 shapes per
-creature; must read at 60 px on a small screen. Original characters only.
+## Art style (Milestone 3 — art DONE 2026-10-26, audio pending)
+Flat cartoon sticker style: thick dark-navy outlines, white sticker border,
+big expressive eyes, cream-to-peach pastel backdrop, Baloo 2 display font.
+All 11 creatures + backdrop + app icon generated with Google Flow (Nano
+Banana 2.1, 1024², own prompts/original characters), background-removed and
+packed to 512² transparent PNGs (`assets/art/creatures/`). Regeneration
+prompts: shared sticker-style preamble + per-character description — see the
+Flow project "Jar of Goofs — game art". Sprites draw at 2.35× collision
+radius (`Creature.SPRITE_DIAMETER_FACTOR`).
 
 ## Sound list (placeholder in M2, final in M3)
 | Sound | When | File |

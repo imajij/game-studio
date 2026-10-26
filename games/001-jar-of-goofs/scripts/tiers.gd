@@ -31,7 +31,23 @@ const RADII: Array[float] = [
 ## (triangular numbers — higher tiers pay much more).
 const POINTS: Array[int] = [0, 0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55]
 
-## Greybox colors (one clear hue per tier); real art replaces these in M3.
+## Character art (1-indexed like the other tables; index 0 is padding).
+const TEXTURES: Array[Texture2D] = [
+	null,
+	preload("res://assets/art/creatures/t01-bloop.png"),
+	preload("res://assets/art/creatures/t02-sir-crumbs.png"),
+	preload("res://assets/art/creatures/t03-sock-goblin.png"),
+	preload("res://assets/art/creatures/t04-toastradamus.png"),
+	preload("res://assets/art/creatures/t05-croissant-crab.png"),
+	preload("res://assets/art/creatures/t06-lord-pickleton.png"),
+	preload("res://assets/art/creatures/t07-bananarchy.png"),
+	preload("res://assets/art/creatures/t08-fridge-philosopher.png"),
+	preload("res://assets/art/creatures/t09-capybara-suit.png"),
+	preload("res://assets/art/creatures/t10-grandpa-galaxy.png"),
+	preload("res://assets/art/creatures/t11-cosmic-bloop.png"),
+]
+
+## Accent colors per tier (used for UI tints; sprites carry the real look).
 const COLORS: Array[Color] = [
 	Color.BLACK,
 	Color(0.55, 0.85, 0.35), # Bloop — pea green

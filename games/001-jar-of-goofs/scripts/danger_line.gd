@@ -3,7 +3,7 @@ extends Node2D
 ## Dashed line creatures must stay below. Pulses red while anything settled
 ## sits above it (the 2-second countdown to game over is running).
 
-const IDLE_COLOR: Color = Color(1.0, 1.0, 1.0, 0.35)
+const IDLE_COLOR: Color = Color(0.4, 0.3, 0.5, 0.4)
 const ARMED_COLOR: Color = Color(0.95, 0.25, 0.2)
 const LINE_WIDTH: float = 6.0
 const DASH_LENGTH: float = 24.0

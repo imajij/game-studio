@@ -4,7 +4,10 @@ extends Node2D
 ## as flat rectangles. game.gd owns the layout numbers and calls build().
 
 const WALL_THICKNESS: float = 24.0
-const WALL_COLOR: Color = Color(0.35, 0.38, 0.45)
+## Glassy jar look over the pastel backdrop.
+const WALL_FILL: Color = Color(0.72, 0.84, 0.95, 0.4)
+const WALL_EDGE: Color = Color(1.0, 1.0, 1.0, 0.8)
+const EDGE_WIDTH: float = 4.0
 
 var left_x: float = 0.0
 var right_x: float = 0.0
@@ -42,9 +45,13 @@ func _draw() -> void:
 	if right_x <= 0.0:
 		return
 	var height := floor_y - top_y
-	draw_rect(Rect2(left_x - WALL_THICKNESS, top_y, WALL_THICKNESS, height), WALL_COLOR)
-	draw_rect(Rect2(right_x, top_y, WALL_THICKNESS, height), WALL_COLOR)
+	draw_rect(Rect2(left_x - WALL_THICKNESS, top_y, WALL_THICKNESS, height), WALL_FILL)
+	draw_rect(Rect2(right_x, top_y, WALL_THICKNESS, height), WALL_FILL)
 	draw_rect(
 		Rect2(left_x - WALL_THICKNESS, floor_y, right_x - left_x + WALL_THICKNESS * 2.0, WALL_THICKNESS),
-		WALL_COLOR
+		WALL_FILL
 	)
+	# Bright inner rims make the glass read against the backdrop.
+	draw_line(Vector2(left_x, top_y), Vector2(left_x, floor_y), WALL_EDGE, EDGE_WIDTH)
+	draw_line(Vector2(right_x, top_y), Vector2(right_x, floor_y), WALL_EDGE, EDGE_WIDTH)
+	draw_line(Vector2(left_x, floor_y), Vector2(right_x, floor_y), WALL_EDGE, EDGE_WIDTH)

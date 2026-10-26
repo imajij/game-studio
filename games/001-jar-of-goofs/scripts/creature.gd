@@ -8,7 +8,9 @@ signal same_tier_contact(a: Creature, b: Creature)
 
 const BOUNCE: float = 0.2
 const FRICTION: float = 0.8
-const OUTLINE_WIDTH: float = 5.0
+## Sprites are stickers larger than the collision circle (ears, hats, arms),
+## so draw wider than the physics diameter; slight visual overlap is fine.
+const SPRITE_DIAMETER_FACTOR: float = 2.35
 const MERGE_POP_SEC: float = 0.25
 const MERGE_POP_FROM: float = 0.4
 ## Tier-1 radius; mass scales with area relative to it so big creatures sink.
@@ -69,15 +71,9 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _draw() -> void:
-	var r := radius * visual_scale
-	draw_circle(Vector2.ZERO, r, Tiers.COLORS[tier])
-	draw_arc(Vector2.ZERO, r, 0.0, TAU, 48, Tiers.COLORS[tier].darkened(0.4), OUTLINE_WIDTH, true)
-	draw_string(
-		ThemeDB.fallback_font,
-		Vector2(-r, r * 0.33),
-		str(tier),
-		HORIZONTAL_ALIGNMENT_CENTER,
-		r * 2.0,
-		int(r * 0.9),
-		Color(1.0, 1.0, 1.0, 0.95)
+	var side := radius * SPRITE_DIAMETER_FACTOR * visual_scale
+	draw_texture_rect(
+		Tiers.TEXTURES[tier],
+		Rect2(Vector2(-side / 2.0, -side / 2.0), Vector2(side, side)),
+		false
 	)
