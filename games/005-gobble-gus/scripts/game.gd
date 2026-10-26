@@ -49,8 +49,7 @@ var restarting: bool = false
 var game_over_at_sec: float = 0.0
 var shake_strength: float = 0.0
 
-## Art pass sets this; null = greybox Gus.
-static var gus_texture: Texture2D = null
+static var gus_texture: Texture2D = preload("res://assets/art/characters/gobble-gus.png")
 
 @onready var camera: Camera2D = $Camera
 @onready var items: Node2D = $Items

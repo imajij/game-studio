@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
 [ext_resource type="FontFile" path="res://assets/fonts/Baloo2.ttf" id="3_font"]
+[ext_resource type="Texture2D" path="res://assets/art/background.png" id="4_bg"]
 
 [sub_resource type="StyleBoxFlat" id="btn_green"]
 bg_color = Color(0.24, 0.6, 0.38, 0.95)
@@ -22,6 +23,10 @@ script = ExtResource("1_game")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(540, 960)
+
+[node name="Background" type="Sprite2D" parent="Camera"]
+scale = Vector2(1.40625, 1.40625)
+texture = ExtResource("4_bg")
 
 [node name="Items" type="Node2D" parent="."]
 

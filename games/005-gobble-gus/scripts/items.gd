@@ -23,5 +23,12 @@ const COLORS: Array[Color] = [
 	Color(0.72, 0.40, 0.32), # Uncle Brick
 ]
 
-## Art pass fills this; empty/null = greybox shapes.
-const TEXTURES: Array[Texture2D] = []
+const TEXTURES: Array[Texture2D] = [
+	preload("res://assets/art/characters/cookie-carl.png"),
+	preload("res://assets/art/characters/taco-tina.png"),
+	preload("res://assets/art/characters/melon-mo.png"),
+	preload("res://assets/art/characters/pie-guy.png"),
+	preload("res://assets/art/characters/angry-anvil.png"),
+	preload("res://assets/art/characters/spiky-boi.png"),
+	preload("res://assets/art/characters/uncle-brick.png"),
+]
