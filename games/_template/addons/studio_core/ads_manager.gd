@@ -13,6 +13,8 @@ extends Node
 
 signal interstitial_closed
 signal rewarded_earned(reward_type: String)
+## Fired when a rewarded ad closes, with or without a reward (unpause here).
+signal rewarded_closed
 signal rewarded_unavailable
 
 ## Google's official Android TEST ad units — safe to show and tap.
