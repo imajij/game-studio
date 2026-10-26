@@ -5,8 +5,8 @@ casual/"brainrot"-style mobile games for Google Play using Godot 4. All games li
 single repository and are tracked on GitHub. Read this whole file before doing anything.
 
 ## Studio identity (fill these in)
-- Developer / studio name: <YOUR STUDIO NAME>          <!-- also set in studio.cfg -->
-- Android package prefix: com.<yourstudio>   (each game: com.<yourstudio>.<gameslug>)
+- Developer / studio name: Zintara          <!-- also set in studio.cfg -->
+- Android package prefix: com.zintara   (each game: com.zintara.<gameslug>)
 - GitHub username: imajij
 - Repo name: game-studio (private)
 - Machine: MacBook Pro, Apple Silicon (M5 Pro), macOS, zsh shell
