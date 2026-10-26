@@ -44,6 +44,7 @@ var shake_strength: float = 0.0
 
 @onready var camera: Camera2D = $Camera
 @onready var snacks: Node2D = $Snacks
+@onready var deco: Deco = $Deco
 @onready var score_label: Label = $UI/ScoreLabel
 @onready var best_label: Label = $UI/BestLabel
 @onready var lives_label: Label = $UI/LivesLabel
@@ -55,6 +56,7 @@ var shake_strength: float = 0.0
 func _ready() -> void:
 	randomize()
 	camera.make_current()
+	deco.painter = _paint_trail
 	revive_button.pressed.connect(_on_revive_pressed)
 	AdsManager.rewarded_earned.connect(_on_rewarded_earned)
 	AdsManager.rewarded_closed.connect(func() -> void: get_tree().paused = false)
@@ -75,7 +77,7 @@ func _process(delta: float) -> void:
 	var now := _now_sec()
 	while not trail.is_empty() and now - float(trail[0].t) > TRAIL_LIFE:
 		trail.pop_front()
-	queue_redraw()
+	deco.queue_redraw()
 
 
 func _physics_process(delta: float) -> void:
@@ -275,10 +277,10 @@ func _now_sec() -> float:
 	return Time.get_ticks_msec() / 1000.0
 
 
-func _draw() -> void:
+func _paint_trail(canvas: CanvasItem) -> void:
 	if trail.size() < 2:
 		return
 	for i in range(1, trail.size()):
 		var alpha := float(i) / trail.size()
-		draw_line(trail[i - 1].p, trail[i].p, Color(1.0, 1.0, 1.0, alpha * 0.8),
+		canvas.draw_line(trail[i - 1].p, trail[i].p, Color(1.0, 1.0, 1.0, alpha * 0.8),
 			10.0 * alpha + 2.0)

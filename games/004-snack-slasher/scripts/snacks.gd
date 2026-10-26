@@ -20,5 +20,11 @@ const COLORS: Array[Color] = [
 	Color(0.55, 0.85, 0.95), # Sir Soap — suspiciously clean blue
 ]
 
-## Art pass fills this; empty/null = greybox faces.
-const TEXTURES: Array[Texture2D] = []
+const TEXTURES: Array[Texture2D] = [
+	preload("res://assets/art/characters/pizza-pete.png"),
+	preload("res://assets/art/characters/donut-diane.png"),
+	preload("res://assets/art/characters/burrito-bandit.png"),
+	preload("res://assets/art/characters/sad-samosa.png"),
+	preload("res://assets/art/characters/chip-commander.png"),
+	preload("res://assets/art/characters/sir-soap.png"),
+]
