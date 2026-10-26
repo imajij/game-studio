@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# temp
+*.tmp
+
+# Godot caches (every game folder) — *.import and *.uid files ARE committed
+.godot/
+
+# build output
+builds/
+android/build/
+*.aab
+*.apk
+
+# secrets — never commit
+export_credentials.cfg
+*.keystore
+*.jks
+.env
+google-services*.json
+*service-account*.json
+ads_config.local.cfg
