@@ -8,8 +8,7 @@ const BODY_COLOR: Color = Color(0.78, 0.72, 0.92)
 const WING_COLOR: Color = Color(0.92, 0.88, 1.0, 0.85)
 const FLAP_HZ: float = 9.0
 
-## Set by the art pass; null = greybox.
-static var texture: Texture2D = null
+static var texture: Texture2D = preload("res://assets/art/characters/mothias.png")
 
 var invincible: bool = false
 var _time: float = 0.0

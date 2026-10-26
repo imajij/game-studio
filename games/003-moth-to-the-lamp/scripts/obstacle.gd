@@ -12,8 +12,13 @@ const PAW_SIZE := Vector2(430.0, 95.0)
 const ORB_RADIUS: float = 70.0
 const SPARKLE_RADIUS: float = 26.0
 
-## Art pass fills these (keyed by Kind); null entries stay greybox.
-static var textures: Array = [null, null, null, null]
+## Keyed by Kind; sparkle stays hand-drawn.
+static var textures: Array = [
+	preload("res://assets/art/characters/fan-bro.png"),
+	preload("res://assets/art/characters/pawl.png"),
+	preload("res://assets/art/characters/dusty.png"),
+	null,
+]
 
 var kind: Kind = Kind.ORB
 ## PAW only: -1 = left wall, 1 = right wall.
@@ -64,27 +69,32 @@ func _draw() -> void:
 	match kind:
 		Kind.FAN:
 			var half := FAN_SIZE / 2.0
-			draw_rect(Rect2(-half, FAN_SIZE), Color(0.55, 0.6, 0.7))
+			draw_rect(Rect2(-half, FAN_SIZE), Color(0.55, 0.6, 0.7, 0.85))
 			var blade_angle := _time * 6.0
 			for i in 3:
 				var dir := Vector2.from_angle(blade_angle + TAU * i / 3.0)
 				draw_line(Vector2.ZERO, dir * half.x * 0.85, Color(0.8, 0.85, 0.95), 10.0)
-			draw_circle(Vector2.ZERO, 18.0, Color(0.3, 0.33, 0.42))
+			if textures[Kind.FAN] != null:
+				draw_texture_rect(textures[Kind.FAN], Rect2(-85.0, -85.0, 170.0, 170.0), false)
+			else:
+				draw_circle(Vector2.ZERO, 18.0, Color(0.3, 0.33, 0.42))
 		Kind.PAW:
 			var size := _paw_size()
 			var rect := Rect2(-size / 2.0, size)
 			draw_rect(rect, Color(0.95, 0.68, 0.45))
 			var tip_x := (size.x / 2.0) * -side
-			draw_circle(Vector2(tip_x, 0.0), size.y / 2.0, Color(0.95, 0.68, 0.45))
-			for i in 3:
-				draw_circle(Vector2(tip_x + side * 8.0, -size.y * 0.3 + i * size.y * 0.3),
-					9.0, Color(0.98, 0.85, 0.75))
+			if textures[Kind.PAW] != null:
+				draw_texture_rect(textures[Kind.PAW],
+					Rect2(tip_x - 100.0, -100.0, 200.0, 200.0), false)
+			else:
+				draw_circle(Vector2(tip_x, 0.0), size.y / 2.0, Color(0.95, 0.68, 0.45))
 		Kind.ORB:
-			draw_circle(Vector2.ZERO, ORB_RADIUS, Color(0.5, 0.42, 0.62, 0.9))
-			draw_arc(Vector2.ZERO, ORB_RADIUS, 0.0, TAU, 32, Color(0.75, 0.68, 0.88), 5.0, true)
-			for i in 5:
-				var dir := Vector2.from_angle(TAU * i / 5.0 + 0.4)
-				draw_line(dir * ORB_RADIUS, dir * (ORB_RADIUS + 22.0), Color(0.75, 0.68, 0.88), 4.0)
+			if textures[Kind.ORB] != null:
+				var s := ORB_RADIUS * 2.3
+				draw_texture_rect(textures[Kind.ORB],
+					Rect2(Vector2(-s / 2.0, -s / 2.0), Vector2(s, s)), false)
+			else:
+				draw_circle(Vector2.ZERO, ORB_RADIUS, Color(0.5, 0.42, 0.62, 0.9))
 		Kind.SPARKLE:
 			var pulse := 0.8 + 0.2 * sin(_time * 8.0)
 			draw_circle(Vector2.ZERO, SPARKLE_RADIUS * pulse, Color(1.0, 0.9, 0.45))
