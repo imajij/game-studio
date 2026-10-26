@@ -9,7 +9,8 @@
 
 # build output
 builds/
-android/build/
+**/android/build/
+**/android/.build_version
 *.aab
 *.apk
 
