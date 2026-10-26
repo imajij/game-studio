@@ -41,6 +41,23 @@ sed -i '' "s|# GAME: _template|# GAME: $name|" "$dir/GAME.md"
 
 mkdir -p "$ROOT/marketing/$slug"
 
+# Install the Android gradle build template (needed by the AdMob plugin's
+# gradle builds; android/build is gitignored). Matches the installed Godot.
+GODOT_BIN="${GODOT:-/Applications/Godot.app/Contents/MacOS/Godot}"
+if [[ -x "$GODOT_BIN" ]]; then
+  gd_ver="$("$GODOT_BIN" --version | sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+\.[a-z]+).*/\1/')"
+  src_zip="$HOME/Library/Application Support/Godot/export_templates/$gd_ver/android_source.zip"
+  if [[ -f "$src_zip" ]]; then
+    mkdir -p "$dir/android/build"
+    unzip -qo "$src_zip" -d "$dir/android/build"
+    echo "$gd_ver" > "$dir/android/.build_version"
+    touch "$dir/android/.gdignore"
+    echo "installed Android build template ($gd_ver)"
+  else
+    echo "warning: export templates not found at $src_zip — install via Godot editor" >&2
+  fi
+fi
+
 echo "created $dir"
 echo "  display name: $name"
 echo "  package id:   $pkg  (versionCode 1, versionName 0.1.0)"
