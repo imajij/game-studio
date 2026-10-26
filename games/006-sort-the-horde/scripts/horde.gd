@@ -18,5 +18,12 @@ const BABY_COLORS: Array[Color] = [
 	Color(0.72, 0.88, 0.65),
 ]
 
-## Art pass fills these (3 ghouls then 3 babies); empty = greybox faces.
-const TEXTURES: Array[Texture2D] = []
+## 3 ghouls then 3 babies.
+const TEXTURES: Array[Texture2D] = [
+	preload("res://assets/art/characters/grimble.png"),
+	preload("res://assets/art/characters/soggy-joe.png"),
+	preload("res://assets/art/characters/bitey.png"),
+	preload("res://assets/art/characters/beanie.png"),
+	preload("res://assets/art/characters/pudge.png"),
+	preload("res://assets/art/characters/sprout.png"),
+]

@@ -44,6 +44,7 @@ var shake_strength: float = 0.0
 
 @onready var camera: Camera2D = $Camera
 @onready var creatures: Node2D = $Creatures
+@onready var deco: Deco = $Deco
 @onready var score_label: Label = $UI/ScoreLabel
 @onready var best_label: Label = $UI/BestLabel
 @onready var lives_label: Label = $UI/LivesLabel
@@ -54,6 +55,8 @@ var shake_strength: float = 0.0
 func _ready() -> void:
 	randomize()
 	camera.make_current()
+	deco.painter = _paint_doors
+	deco.queue_redraw()
 	revive_button.pressed.connect(_on_revive_pressed)
 	AdsManager.rewarded_earned.connect(_on_rewarded_earned)
 	AdsManager.rewarded_closed.connect(func() -> void: get_tree().paused = false)
@@ -241,13 +244,13 @@ func _now_sec() -> float:
 	return Time.get_ticks_msec() / 1000.0
 
 
-func _draw() -> void:
+func _paint_doors(canvas: CanvasItem) -> void:
 	# Dungeon door (left) and daycare door (right) flank the fail line.
-	draw_rect(Rect2(0.0, 600.0, 90.0, 560.0), Color(0.4, 0.3, 0.55))
-	draw_circle(Vector2(45.0, 640.0), 45.0, Color(0.4, 0.3, 0.55))
-	draw_rect(Rect2(14.0, 660.0, 62.0, 460.0), Color(0.22, 0.16, 0.32))
-	draw_rect(Rect2(990.0, 600.0, 90.0, 560.0), Color(0.95, 0.8, 0.4))
-	draw_circle(Vector2(1035.0, 640.0), 45.0, Color(0.95, 0.8, 0.4))
-	draw_rect(Rect2(1004.0, 660.0, 62.0, 460.0), Color(1.0, 0.93, 0.7))
-	draw_dashed_line(Vector2(80.0, FAIL_Y), Vector2(1000.0, FAIL_Y),
+	canvas.draw_rect(Rect2(0.0, 600.0, 90.0, 560.0), Color(0.4, 0.3, 0.55))
+	canvas.draw_circle(Vector2(45.0, 640.0), 45.0, Color(0.4, 0.3, 0.55))
+	canvas.draw_rect(Rect2(14.0, 660.0, 62.0, 460.0), Color(0.22, 0.16, 0.32))
+	canvas.draw_rect(Rect2(990.0, 600.0, 90.0, 560.0), Color(0.95, 0.8, 0.4))
+	canvas.draw_circle(Vector2(1035.0, 640.0), 45.0, Color(0.95, 0.8, 0.4))
+	canvas.draw_rect(Rect2(1004.0, 660.0, 62.0, 460.0), Color(1.0, 0.93, 0.7))
+	canvas.draw_dashed_line(Vector2(80.0, FAIL_Y), Vector2(1000.0, FAIL_Y),
 		Color(0.5, 0.4, 0.6, 0.4), 5.0, 22.0)
