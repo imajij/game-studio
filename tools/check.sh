@@ -35,8 +35,11 @@ for d in "${dirs[@]}"; do
   echo "== $game: boot one frame"
   out+=$'\n'"$("$GODOT" --headless --path "$d" --quit 2>&1)"
 
-  errors="$(grep -E 'SCRIPT ERROR|Parse Error|ERROR:' <<<"$out" || true)"
-  warnings="$(grep -E 'SCRIPT WARNING|WARNING:' <<<"$out" || true)"
+  # Exit-time ObjectDB/resource diagnostics are known noise from plugins that
+  # keep static refs (e.g. the AdMob loaders); they are not script errors.
+  benign='resources still in use at exit|ObjectDB instances were leaked'
+  errors="$(grep -E 'SCRIPT ERROR|Parse Error|ERROR:' <<<"$out" | grep -vE "$benign" || true)"
+  warnings="$(grep -E 'SCRIPT WARNING|WARNING:' <<<"$out" | grep -vE "$benign" || true)"
 
   if [[ -n "$warnings" ]]; then
     echo "-- warnings:"
