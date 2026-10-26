@@ -8,7 +8,7 @@ All conventions live in [CLAUDE.md](CLAUDE.md) — read that first.
 
 | # | Game | Slug | Status | Version | Play Store | Notes |
 |---|------|------|--------|---------|------------|-------|
-| – | *(none yet)* | | | | | |
+| 001 | Jar of Goofs | jar-of-goofs | prototype | 0.1.0 | – | drop-and-merge puzzle; M1 greybox done |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`.
 Full metrics live in [docs/games-log.md](docs/games-log.md).
