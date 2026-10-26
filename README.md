@@ -8,7 +8,12 @@ All conventions live in [CLAUDE.md](CLAUDE.md) — read that first.
 
 | # | Game | Slug | Status | Version | Play Store | Notes |
 |---|------|------|--------|---------|------------|-------|
-| 001 | Jar of Goofs | jar-of-goofs | prototype | 0.1.0 | – | drop-and-merge puzzle; M1 greybox done |
+| 001 | Jar of Goofs | jar-of-goofs | prototype | 0.1.0 | – | drop-and-merge puzzle; art+ads+Goofdex in |
+| 002 | Stack-a-Freak | stack-a-freak | prototype | 0.1.0 | – | crane tower stacker; art+ads in |
+| 003 | Moth to the Lamp | moth-to-the-lamp | prototype | 0.1.0 | – | endless flutter climber; art+ads in |
+| 004 | Snack Slasher | snack-slasher | prototype | 0.1.0 | – | swipe slicer; art+ads in |
+| 005 | Gobble Gus | gobble-gus | prototype | 0.1.0 | – | catch/dodge feeder; art+ads in |
+| 006 | Sort the Horde | sort-the-horde | prototype | 0.1.0 | – | swipe sorter; art+ads in |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`.
 Full metrics live in [docs/games-log.md](docs/games-log.md).

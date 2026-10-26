@@ -6,6 +6,11 @@ Metrics come from Play Console + AdMob (pasted in after launch).
 | Game | Status | Released | Installs | DAU | D1 | D7 | eCPM | ARPDAU | Rev/mo | Verdict |
 |------|--------|----------|----------|-----|----|----|------|--------|--------|---------|
 | Jar of Goofs | prototype | – | – | – | – | – | – | – | – | – |
+| Stack-a-Freak | prototype | – | – | – | – | – | – | – | – | – |
+| Moth to the Lamp | prototype | – | – | – | – | – | – | – | – | – |
+| Snack Slasher | prototype | – | – | – | – | – | – | – | – | – |
+| Gobble Gus | prototype | – | – | – | – | – | – | – | – | – |
+| Sort the Horde | prototype | – | – | – | – | – | – | – | – | – |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`
 
