@@ -1,18 +1,17 @@
 # GAME: Moon Chaos
 
-- Status: greybox (core loop playable in shapes; art + ads + automation pending)
+- Status: in review (closed test) — greybox build; art + automation still pending
 - Package: com.zintara.moon_chaos
-- Target audience age: 13+ (general casual; **see the flag below**)
-- Privacy policy URL: (required before release)
+- Target audience age: Everyone incl. under-13 (declared child-directed, Families policy)
+- Privacy policy URL: https://imajij.github.io/privacy.html
 - Platform: Android only for v1. Code is kept iOS-clean so iOS is a later
   export rather than a rewrite, but no iOS build is planned.
 
-> **Audience flag (decide before release):** a cheerful moon-sweeping tycoon
-> skews younger than the rest of the catalogue. If under-13s are expected to
-> play, this must be declared child-directed and Google Play **Families
-> policy** applies (certified ad SDKs, child-directed ad settings, stricter
-> content). Never misdeclare the audience. Current assumption follows games
-> 003-006: declared 13+, with G-rated ad content requested anyway.
+> **Audience decision (2026-10-27):** declared **Everyone including under-13**,
+> matching the rest of the catalogue (Ajij's fleet-wide choice at M5) — and this
+> game skews youngest of all. Google Play **Families policy** applies: the
+> AdMob adapter tags every request child-directed (TFCD) with ad content capped
+> at G before initialization. Never misdeclare the audience.
 
 ## Concept
 You are the cleaner on a filthy Moon. Sweep lunar dust, carry it to the depot,
@@ -96,3 +95,4 @@ and launch roar, cash counter ticks.
 | versionName | versionCode | Date | Notes |
 |-------------|-------------|------|-------|
 | 0.1.0 | 1 | 2026-10-27 | Sim layer + 3D greybox of the core loop (unreleased) |
+| 1.0.0 | 1 | 2026-10-27 | First Play Store build (closed test): greybox loop, child-directed ads (Families), signed .aab |
