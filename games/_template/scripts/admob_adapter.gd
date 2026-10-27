@@ -15,6 +15,14 @@ var _pending_reward_type: String = ""
 
 func _ready() -> void:
 	super()
+	# Google Play Families policy: the store listing declares the audience
+	# includes children under 13, so every ad request is tagged child-directed
+	# (TFCD) with ad content capped at G. TFCD traffic gets non-personalized
+	# ads automatically, so no UMP consent form is needed.
+	var config := RequestConfiguration.new()
+	config.tag_for_child_directed_treatment = RequestConfiguration.TagForChildDirectedTreatment.TRUE
+	config.max_ad_content_rating = RequestConfiguration.MAX_AD_CONTENT_RATING_G
+	MobileAds.set_request_configuration(config)
 	# initialize() is async — loading an ad before it completes throws on
 	# Android, so both first loads live in the completion callback.
 	var listener := OnInitializationCompleteListener.new()

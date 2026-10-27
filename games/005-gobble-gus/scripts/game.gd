@@ -274,7 +274,7 @@ func _add_shake(amount: float) -> void:
 func _refresh_ui() -> void:
 	score_label.text = str(score)
 	best_label.text = "BEST %d" % high_score
-	lives_label.text = "LIVES %d" % lives
+	lives_label.text = "LIVES %d" % maxi(lives, 0)
 
 
 func _now_sec() -> float:
