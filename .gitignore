@@ -23,3 +23,8 @@ google-services*.json
 *service-account*.json
 ads_config.local.cfg
 override.cfg
+
+# Play Console account reference: contains the developer account id and the
+# tester email list, so it must never enter a public history. Working copy is
+# kept locally and backed up at ~/keystores/play-console-reference.md
+docs/play-console.md
