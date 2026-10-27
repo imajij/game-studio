@@ -1,0 +1,198 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
+[ext_resource type="FontFile" path="res://assets/fonts/Baloo2.ttf" id="2_font"]
+[ext_resource type="Script" path="res://addons/studio_core/deco.gd" id="3_deco"]
+
+[sub_resource type="StyleBoxFlat" id="btn_warm"]
+bg_color = Color(0.75, 0.45, 0.2, 0.95)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="btn_pressed"]
+bg_color = Color(0.3, 0.18, 0.1, 0.95)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+
+[node name="Deco" type="Node2D" parent="."]
+script = ExtResource("3_deco")
+
+[node name="Creeps" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MoneyLabel" type="Label" parent="UI"]
+offset_left = 40.0
+offset_top = 44.0
+offset_right = 400.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(1, 0.92, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.1, 0.06, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 64
+text = "₹220"
+
+[node name="LivesLabel" type="Label" parent="UI"]
+offset_left = 660.0
+offset_top = 50.0
+offset_right = 1060.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(1, 0.5, 0.55, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.1, 0.06, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 48
+text = "SHOP ♥♥♥♥♥"
+horizontal_alignment = 2
+
+[node name="WaveLabel" type="Label" parent="UI"]
+offset_top = 130.0
+offset_right = 1080.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(0.95, 0.9, 0.85, 0.85)
+theme_override_colors/font_outline_color = Color(0.16, 0.1, 0.06, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 44
+text = "WAVE 0"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="UI"]
+offset_top = 200.0
+offset_right = 1080.0
+offset_bottom = 260.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_colors/font_outline_color = Color(0.16, 0.1, 0.06, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 38
+text = "tap a + spot to build"
+horizontal_alignment = 1
+
+[node name="WaveButton" type="Button" parent="UI"]
+offset_left = 290.0
+offset_top = 1740.0
+offset_right = 790.0
+offset_bottom = 1860.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("btn_warm")
+theme_override_styles/hover = SubResource("btn_warm")
+theme_override_styles/pressed = SubResource("btn_pressed")
+text = "START WAVE 1"
+
+[node name="VoucherButton" type="Button" parent="UI"]
+visible = false
+offset_left = 800.0
+offset_top = 1620.0
+offset_right = 1060.0
+offset_bottom = 1716.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = SubResource("btn_warm")
+theme_override_styles/hover = SubResource("btn_warm")
+theme_override_styles/pressed = SubResource("btn_pressed")
+text = "FREE EVOLVE · AD"
+
+[node name="BuildPanel" type="Control" parent="UI"]
+visible = false
+offset_left = 40.0
+offset_top = 1560.0
+offset_right = 1040.0
+offset_bottom = 1730.0
+
+[node name="Build0" type="Button" parent="UI/BuildPanel"]
+offset_right = 320.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("btn_warm")
+theme_override_styles/hover = SubResource("btn_warm")
+theme_override_styles/pressed = SubResource("btn_pressed")
+text = "Chai Cannon"
+
+[node name="Build1" type="Button" parent="UI/BuildPanel"]
+offset_left = 340.0
+offset_right = 660.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("btn_warm")
+theme_override_styles/hover = SubResource("btn_warm")
+theme_override_styles/pressed = SubResource("btn_pressed")
+text = "Pakora Mortar"
+
+[node name="Build2" type="Button" parent="UI/BuildPanel"]
+offset_left = 680.0
+offset_right = 1000.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("btn_warm")
+theme_override_styles/hover = SubResource("btn_warm")
+theme_override_styles/pressed = SubResource("btn_pressed")
+text = "Fan Blower"
+
+[node name="UpgradeButton" type="Button" parent="UI/BuildPanel"]
+visible = false
+offset_left = 100.0
+offset_right = 900.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("btn_warm")
+theme_override_styles/hover = SubResource("btn_warm")
+theme_override_styles/pressed = SubResource("btn_pressed")
+text = "EVOLVE"
+
+[node name="GameOverPanel" type="Control" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Dim" type="ColorRect" parent="UI/GameOverPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.1, 0.06, 0.04, 0.85)
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPanel"]
+offset_top = 660.0
+offset_right = 1080.0
+offset_bottom = 790.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 92
+text = "SHOP LOOTED"
+horizontal_alignment = 1
+
+[node name="FinalScore" type="Label" parent="UI/GameOverPanel"]
+offset_top = 850.0
+offset_right = 1080.0
+offset_bottom = 1010.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 56
+text = ""
+horizontal_alignment = 1
+
+[node name="RestartLabel" type="Label" parent="UI/GameOverPanel"]
+offset_top = 1080.0
+offset_right = 1080.0
+offset_bottom = 1140.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 44
+text = "tap to restart"
+horizontal_alignment = 1
