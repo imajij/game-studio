@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+
+  "player": {
+    "base_move_speed": 4.2,
+    "base_carry_capacity": 40
+  },
+
+  "depot": {
+    "base_capacity": 400
+  },
+
+  "offline": {
+    "rate_multiplier": 0.35,
+    "cap_hours": 8.0
+  },
+
+  "tools": [
+    { "id": "toothbrush",  "name": "Toothbrush",  "radius_cells": 1, "sweep_rate": 18.0,  "cost": 0 },
+    { "id": "hand_broom",  "name": "Hand Broom",  "radius_cells": 2, "sweep_rate": 34.0,  "cost": 250 },
+    { "id": "vacuum_pack", "name": "Vacuum Pack", "radius_cells": 3, "sweep_rate": 60.0,  "cost": 1400 },
+    { "id": "roller",      "name": "Roller Rig",  "radius_cells": 5, "sweep_rate": 110.0, "cost": 7500 }
+  ],
+
+  "upgrades": {
+    "carry_capacity": { "name": "Carry Capacity", "cost_base": 60,  "cost_growth": 1.28, "effect_base": 40.0, "effect_step": 18.0,  "max_level": 25 },
+    "move_speed":     { "name": "Move Speed",     "cost_base": 90,  "cost_growth": 1.32, "effect_base": 1.0,  "effect_step": 0.06,  "max_level": 15 },
+    "depot_capacity": { "name": "Depot Capacity", "cost_base": 120, "cost_growth": 1.30, "effect_base": 400.0,"effect_step": 150.0, "max_level": 20 },
+    "rocket_payout":  { "name": "Rocket Payout",  "cost_base": 200, "cost_growth": 1.40, "effect_base": 1.0,  "effect_step": 0.12,  "max_level": 20 }
+  },
+
+  "rocket": {
+    "base_capacity": 300,
+    "auto_launch_seconds": 45.0,
+    "cash_per_dust": 1.0,
+    "full_load_bonus": 0.25,
+    "launch_seconds": 3.0
+  },
+
+  "dust_types": [
+    { "id": "regular", "name": "Moon Dust",   "value_mult": 1.0, "color": "#9aa0a8" },
+    { "id": "glint",   "name": "Glint Dust",  "value_mult": 2.5, "color": "#cfe6ff" },
+    { "id": "ember",   "name": "Ember Dust",  "value_mult": 5.0, "color": "#ffb16b" }
+  ],
+
+  "zones": [
+    {
+      "id": "landing_pad", "name": "Landing Pad",
+      "grid": [24, 32], "cell_size": 0.5, "seed": 1001,
+      "dust_density": 0.55, "dust_mix": { "regular": 1.0 },
+      "target_clean_pct": 100.0, "unlock_cost": 0,
+      "payout_mult": 1.0, "introduces": ""
+    },
+    {
+      "id": "crater_rim", "name": "Crater Rim",
+      "grid": [32, 40], "cell_size": 0.5, "seed": 1002,
+      "dust_density": 0.62, "dust_mix": { "regular": 0.85, "glint": 0.15 },
+      "target_clean_pct": 100.0, "unlock_cost": 400,
+      "payout_mult": 1.15, "introduces": "dust_type:glint"
+    },
+    {
+      "id": "solar_field", "name": "Solar Field",
+      "grid": [40, 48], "cell_size": 0.5, "seed": 1003,
+      "dust_density": 0.68, "dust_mix": { "regular": 0.7, "glint": 0.3 },
+      "target_clean_pct": 100.0, "unlock_cost": 2200,
+      "payout_mult": 1.35, "introduces": "hazard:static_cling"
+    },
+    {
+      "id": "mining_shelf", "name": "Mining Shelf",
+      "grid": [48, 56], "cell_size": 0.5, "seed": 1004,
+      "dust_density": 0.72, "dust_mix": { "regular": 0.6, "glint": 0.3, "ember": 0.1 },
+      "target_clean_pct": 100.0, "unlock_cost": 9000,
+      "payout_mult": 1.6, "introduces": "building:collector"
+    },
+    {
+      "id": "dark_side", "name": "Dark Side",
+      "grid": [56, 64], "cell_size": 0.5, "seed": 1005,
+      "dust_density": 0.8, "dust_mix": { "regular": 0.5, "glint": 0.3, "ember": 0.2 },
+      "target_clean_pct": 100.0, "unlock_cost": 32000,
+      "payout_mult": 2.0, "introduces": "building:merger"
+    }
+  ],
+
+  "buildings": [
+    { "id": "collector", "name": "Collector", "cost": 1200, "footprint": [2, 2], "rate_per_sec": 14.0, "radius_cells": 4, "buffer": 40,  "inputs": 0 },
+    { "id": "conveyor",  "name": "Conveyor",  "cost": 90,   "footprint": [1, 1], "rate_per_sec": 30.0, "radius_cells": 0, "buffer": 12,  "inputs": 1 },
+    { "id": "merger",    "name": "Merger",    "cost": 600,  "footprint": [1, 1], "rate_per_sec": 60.0, "radius_cells": 0, "buffer": 18,  "inputs": 2 }
+  ],
+
+  "crystals": {
+    "find_chance_per_cell": 0.0004,
+    "rewarded_grant": 3
+  },
+
+  "contract": {
+    "duration_seconds": 180,
+    "target_clean_pct": 70.0,
+    "reward_crystals": 5
+  },
+
+  "rewarded": {
+    "shipment_multiplier": 2.0,
+    "speed_boost_mult": 1.75,
+    "speed_boost_seconds": 45.0
+  }
+}
