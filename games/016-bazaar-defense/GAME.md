@@ -1,6 +1,6 @@
 # GAME: Bazaar Tower Defense
 
-- Status: in review (closed test)
+- Status: release-ready — Play app creation blocked by weekly limit, create ~2026-11-03
 - Package: com.zintara.bazaar_defense
 - Target audience: Everyone incl. under-13 (declared child-directed, Families policy)
 - Privacy policy URL: https://imajij.github.io/privacy.html

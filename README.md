@@ -15,16 +15,16 @@ All conventions live in [CLAUDE.md](CLAUDE.md) — read that first.
 | 005 | Gobble Gus | gobble-gus | in review (closed test) | 1.0.0 | – | catch/dodge feeder; art+ads in |
 | 006 | Sort the Horde | sort-the-horde | in review (closed test) | 1.0.0 | – | swipe sorter; art+ads in |
 | 007 | Moon Chaos | moon-chaos | in review (closed test) | 1.0.0 | – | 3D lunar cleaning tycoon; sim+tests+greybox in |
-| 008 | Steal a Jugaad | steal-a-jugaad | prototype | 1.0.0 | – | collect/raid tycoon vs AI guard; vector art |
-| 009 | 67 Reflex | reflex-67 | prototype | 1.0.0 | – | precision beat taps on 6 & 7; daily best |
-| 010 | Merge Mohalla | merge-mohalla | prototype | 1.0.0 | – | physics drop-merge, 10 desi tiers |
-| 011 | Escape the Monsoon | escape-the-monsoon | prototype | 1.0.0 | – | 3-lane runner, rotating wave themes |
-| 012 | Aura Farming Idle | aura-farming | prototype | 1.0.0 | – | tap/idle clicker, respect prestige |
-| 013 | Rank the Rot | rank-the-rot | prototype | 1.0.0 | – | swipe tier-list vs daily panel verdict |
-| 014 | Brainrot Fusion Lab | fusion-lab | prototype | 1.0.0 | – | fuse essences, auto-names, AI battles |
-| 015 | Guess the Sound or Get Yeeted | guess-the-sound | prototype | 1.0.0 | – | original synth audio quiz, elimination |
-| 016 | Bazaar Tower Defense | bazaar-defense | prototype | 1.0.0 | – | 3 evolving units, endless waves |
-| 017 | Meme Reset 2014 | meme-reset | prototype | 1.0.0 | – | CRT brick-smasher, era-card collection |
+| 008 | Steal a Jugaad | steal-a-jugaad | in review (closed test) | 1.0.0 | – | collect/raid tycoon vs AI guard; vector art |
+| 009 | 67 Reflex | reflex-67 | in review (closed test) | 1.0.0 | – | precision beat taps on 6 & 7; daily best |
+| 010 | Merge Mohalla | merge-mohalla | in review (closed test) | 1.0.0 | – | physics drop-merge, 10 desi tiers |
+| 011 | Escape the Monsoon | escape-the-monsoon | in review (closed test) | 1.0.0 | – | 3-lane runner, rotating wave themes |
+| 012 | Aura Farming Idle | aura-farming | in review (closed test) | 1.0.0 | – | tap/idle clicker, respect prestige |
+| 013 | Rank the Rot | rank-the-rot | in review (closed test) | 1.0.0 | – | swipe tier-list vs daily panel verdict |
+| 014 | Brainrot Fusion Lab | fusion-lab | in review (closed test) | 1.0.0 | – | fuse essences, auto-names, AI battles |
+| 015 | Guess the Sound or Get Yeeted | guess-the-sound | in review (closed test) | 1.0.0 | – | original synth audio quiz, elimination |
+| 016 | Bazaar Tower Defense | bazaar-defense | release-ready (Play slot ~Nov 3) | 1.0.0 | – | 3 evolving units, endless waves |
+| 017 | Meme Reset 2014 | meme-reset | release-ready (Play slot ~Nov 3) | 1.0.0 | – | CRT brick-smasher, era-card collection |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`.
 Full metrics live in [docs/games-log.md](docs/games-log.md).

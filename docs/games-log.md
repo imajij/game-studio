@@ -12,16 +12,16 @@ Metrics come from Play Console + AdMob (pasted in after launch).
 | Gobble Gus | in review (closed test) | – | – | – | – | – | – | – | – | – |
 | Sort the Horde | in review (closed test) | – | – | – | – | – | – | – | – | – |
 | Moon Chaos | in review (closed test) | – | – | – | – | – | – | – | – | – |
-| Steal a Jugaad | prototype | – | – | – | – | – | – | – | – | – |
-| 67 Reflex | prototype | – | – | – | – | – | – | – | – | – |
-| Merge Mohalla | prototype | – | – | – | – | – | – | – | – | – |
-| Escape the Monsoon | prototype | – | – | – | – | – | – | – | – | – |
-| Aura Farming Idle | prototype | – | – | – | – | – | – | – | – | – |
-| Rank the Rot | prototype | – | – | – | – | – | – | – | – | – |
-| Brainrot Fusion Lab | prototype | – | – | – | – | – | – | – | – | – |
-| Guess the Sound or Get Yeeted | prototype | – | – | – | – | – | – | – | – | – |
-| Bazaar Tower Defense | prototype | – | – | – | – | – | – | – | – | – |
-| Meme Reset 2014 | prototype | – | – | – | – | – | – | – | – | – |
+| Steal a Jugaad | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| 67 Reflex | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Merge Mohalla | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Escape the Monsoon | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Aura Farming Idle | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Rank the Rot | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Brainrot Fusion Lab | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Guess the Sound or Get Yeeted | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Bazaar Tower Defense | release-ready (Play slot ~Nov 3) | – | – | – | – | – | – | – | – | – |
+| Meme Reset 2014 | release-ready (Play slot ~Nov 3) | – | – | – | – | – | – | – | – | – |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`
 

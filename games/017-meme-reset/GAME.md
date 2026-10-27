@@ -1,6 +1,6 @@
 # GAME: Meme Reset 2014
 
-- Status: in review (closed test)
+- Status: release-ready — Play app creation blocked by weekly limit, create ~2026-11-03
 - Package: com.zintara.meme_reset
 - Target audience: Everyone incl. under-13 (declared child-directed, Families policy)
 - Privacy policy URL: https://imajij.github.io/privacy.html
