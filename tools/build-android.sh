@@ -14,6 +14,19 @@ if [[ ! -x "$GODOT" ]]; then
 fi
 
 slug="${1:?usage: tools/build-android.sh <slug>}"
+
+# Release signing: the shared studio upload key lives OUTSIDE the repo
+# (~/keystores/). Godot picks these env vars up when the preset's keystore
+# fields are empty, so no credentials ever touch a tracked file.
+KEYSTORE="$HOME/keystores/studio-upload.keystore"
+if [[ -f "$KEYSTORE" && -f "$HOME/keystores/studio-upload.pass" ]]; then
+  export GODOT_ANDROID_KEYSTORE_RELEASE_PATH="$KEYSTORE"
+  export GODOT_ANDROID_KEYSTORE_RELEASE_USER="zintara-upload"
+  GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD="$(cat "$HOME/keystores/studio-upload.pass")"
+  export GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD
+else
+  echo "warning: ~/keystores/studio-upload.keystore missing — release will be unsigned" >&2
+fi
 dir="$(find "$ROOT/games" -maxdepth 1 -type d -name "[0-9][0-9][0-9]-$slug" | head -1)"
 if [[ -z "$dir" ]]; then
   echo "error: no game '$slug' under games/" >&2
