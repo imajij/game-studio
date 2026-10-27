@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
+[ext_resource type="FontFile" path="res://assets/fonts/Baloo2.ttf" id="2_font"]
+[ext_resource type="Script" path="res://addons/studio_core/deco.gd" id="3_deco"]
+
+[sub_resource type="StyleBoxFlat" id="btn_pink"]
+bg_color = Color(0.75, 0.25, 0.6, 0.95)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="btn_pressed"]
+bg_color = Color(0.3, 0.1, 0.25, 0.95)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+
+[node name="Deco" type="Node2D" parent="."]
+script = ExtResource("3_deco")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+offset_top = 36.0
+offset_right = 1080.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0.9, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.05, 0.18, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 84
+text = "0"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="UI"]
+offset_top = 128.0
+offset_right = 1080.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0.9, 1, 1, 0.6)
+theme_override_colors/font_outline_color = Color(0.15, 0.05, 0.18, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 40
+text = "LV 1"
+horizontal_alignment = 1
+
+[node name="ToastLabel" type="Label" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 1220.0
+offset_right = 1080.0
+offset_bottom = 1290.0
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.05, 0.18, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 46
+text = ""
+horizontal_alignment = 1
+
+[node name="GameOverPanel" type="Control" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Dim" type="ColorRect" parent="UI/GameOverPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.08, 0.04, 0.12, 0.85)
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPanel"]
+offset_top = 620.0
+offset_right = 1080.0
+offset_bottom = 750.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 92
+text = "SIGNAL LOST"
+horizontal_alignment = 1
+
+[node name="FinalScore" type="Label" parent="UI/GameOverPanel"]
+offset_top = 810.0
+offset_right = 1080.0
+offset_bottom = 1030.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 54
+text = ""
+horizontal_alignment = 1
+
+[node name="RestartLabel" type="Label" parent="UI/GameOverPanel"]
+offset_top = 1080.0
+offset_right = 1080.0
+offset_bottom = 1140.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 44
+text = "tap to restart"
+horizontal_alignment = 1
+
+[node name="BallButton" type="Button" parent="UI/GameOverPanel"]
+visible = false
+offset_left = 270.0
+offset_top = 1190.0
+offset_right = 810.0
+offset_bottom = 1300.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("btn_pink")
+theme_override_styles/hover = SubResource("btn_pink")
+theme_override_styles/pressed = SubResource("btn_pressed")
+text = "EXTRA BALL · AD"
