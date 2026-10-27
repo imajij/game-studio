@@ -109,3 +109,4 @@ radius (`Creature.SPRITE_DIAMETER_FACTOR`).
 | versionName | versionCode | Date | Notes |
 |-------------|-------------|------|-------|
 | 0.1.0 | 1 | 2026-10-26 | Milestone 1 greybox (unreleased) |
+| 1.0.0 | 1 | 2026-10-27 | First Play Store build: child-directed ads (Families), signed .aab |

@@ -37,3 +37,4 @@ whoosh, game-over walk, tap).
 | versionName | versionCode | Date | Notes |
 |-------------|-------------|------|-------|
 | 0.1.0 | 1 | 2026-10-26 | Greybox + ads wiring (unreleased) |
+| 1.0.0 | 1 | 2026-10-27 | First Play Store build: child-directed ads (Families), signed .aab |
