@@ -25,7 +25,7 @@ const DEPOT_SIZE: Vector2i = Vector2i(3, 3)
 ## Where the depot and rocket sit: bottom-centre of the zone, so the player
 ## always carries dust "downhill" towards a fixed, learnable spot.
 static func depot_cell_for(def: Balance.ZoneDef) -> Vector2i:
-	return Vector2i(int(def.grid_w / 2.0), maxi(def.grid_h - 3, 0))
+	return Vector2i(int(def.grid_w / 2.0), maxi(def.grid_h - 5, 0))
 
 
 ## Every cell the depot pad covers; buildings pointing into any of them deliver.

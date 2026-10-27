@@ -11,6 +11,7 @@ Metrics come from Play Console + AdMob (pasted in after launch).
 | Snack Slasher | prototype | – | – | – | – | – | – | – | – | – |
 | Gobble Gus | prototype | – | – | – | – | – | – | – | – | – |
 | Sort the Horde | prototype | – | – | – | – | – | – | – | – | – |
+| Moon Chaos | prototype | – | – | – | – | – | – | – | – | – |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`
 

@@ -14,6 +14,7 @@ All conventions live in [CLAUDE.md](CLAUDE.md) — read that first.
 | 004 | Snack Slasher | snack-slasher | prototype | 0.1.0 | – | swipe slicer; art+ads in |
 | 005 | Gobble Gus | gobble-gus | prototype | 0.1.0 | – | catch/dodge feeder; art+ads in |
 | 006 | Sort the Horde | sort-the-horde | prototype | 0.1.0 | – | swipe sorter; art+ads in |
+| 007 | Moon Chaos | moon-chaos | prototype | 0.1.0 | – | 3D lunar cleaning tycoon; sim+tests+greybox in |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`.
 Full metrics live in [docs/games-log.md](docs/games-log.md).
@@ -24,6 +25,7 @@ Full metrics live in [docs/games-log.md](docs/games-log.md).
 tools/new-game.sh <slug> "Display Name"   # create games/NNN-<slug> from _template
 tools/sync-shared.sh                      # push shared/addons/studio_core into every game
 tools/check.sh <slug>|all                 # headless import + script error check
+tools/test.sh <slug>|all                  # headless unit tests (games that have tests/)
 tools/build-android.sh <slug>             # release .aab → builds/<slug>-<version>.aab
 ```
 

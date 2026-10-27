@@ -249,7 +249,13 @@ func _tick_shipment(delta: float) -> void:
 
 ## Hand the carried load to the depot. Returns how much it accepted; anything
 ## that did not fit stays on the player rather than vanishing.
+##
+## The proximity rule is enforced here rather than by hiding the HUD button,
+## so it holds for every caller — a second UI path or an automation hook
+## cannot teleport dust into the depot from across the zone.
 func dump() -> int:
+	if not is_at_depot():
+		return 0
 	var capacity: int = depot_capacity()
 	var before: int = player.carry_total()
 	if before <= 0:

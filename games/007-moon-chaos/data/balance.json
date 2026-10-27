@@ -38,9 +38,9 @@
   },
 
   "dust_types": [
-    { "id": "regular", "name": "Moon Dust",   "value_mult": 1.0, "color": "#9aa0a8" },
-    { "id": "glint",   "name": "Glint Dust",  "value_mult": 2.5, "color": "#cfe6ff" },
-    { "id": "ember",   "name": "Ember Dust",  "value_mult": 5.0, "color": "#ffb16b" }
+    { "id": "regular", "name": "Moon Dust",   "value_mult": 1.0, "color": "#474c55" },
+    { "id": "glint",   "name": "Glint Dust",  "value_mult": 2.5, "color": "#4f86c6" },
+    { "id": "ember",   "name": "Ember Dust",  "value_mult": 5.0, "color": "#c2702a" }
   ],
 
   "zones": [
