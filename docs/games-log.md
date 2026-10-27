@@ -5,13 +5,13 @@ Metrics come from Play Console + AdMob (pasted in after launch).
 
 | Game | Status | Released | Installs | DAU | D1 | D7 | eCPM | ARPDAU | Rev/mo | Verdict |
 |------|--------|----------|----------|-----|----|----|------|--------|--------|---------|
-| Jar of Goofs | prototype | – | – | – | – | – | – | – | – | – |
-| Stack-a-Freak | prototype | – | – | – | – | – | – | – | – | – |
-| Moth to the Lamp | prototype | – | – | – | – | – | – | – | – | – |
-| Snack Slasher | prototype | – | – | – | – | – | – | – | – | – |
-| Gobble Gus | prototype | – | – | – | – | – | – | – | – | – |
-| Sort the Horde | prototype | – | – | – | – | – | – | – | – | – |
-| Moon Chaos | prototype | – | – | – | – | – | – | – | – | – |
+| Jar of Goofs | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Stack-a-Freak | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Moth to the Lamp | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Snack Slasher | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Gobble Gus | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Sort the Horde | in review (closed test) | – | – | – | – | – | – | – | – | – |
+| Moon Chaos | in review (closed test) | – | – | – | – | – | – | – | – | – |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`
 

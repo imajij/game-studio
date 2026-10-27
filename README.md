@@ -8,13 +8,13 @@ All conventions live in [CLAUDE.md](CLAUDE.md) — read that first.
 
 | # | Game | Slug | Status | Version | Play Store | Notes |
 |---|------|------|--------|---------|------------|-------|
-| 001 | Jar of Goofs | jar-of-goofs | prototype | 0.1.0 | – | drop-and-merge puzzle; art+ads+Goofdex in |
-| 002 | Stack-a-Freak | stack-a-freak | prototype | 0.1.0 | – | crane tower stacker; art+ads in |
-| 003 | Moth to the Lamp | moth-to-the-lamp | prototype | 0.1.0 | – | endless flutter climber; art+ads in |
-| 004 | Snack Slasher | snack-slasher | prototype | 0.1.0 | – | swipe slicer; art+ads in |
-| 005 | Gobble Gus | gobble-gus | prototype | 0.1.0 | – | catch/dodge feeder; art+ads in |
-| 006 | Sort the Horde | sort-the-horde | prototype | 0.1.0 | – | swipe sorter; art+ads in |
-| 007 | Moon Chaos | moon-chaos | prototype | 0.1.0 | – | 3D lunar cleaning tycoon; sim+tests+greybox in |
+| 001 | Jar of Goofs | jar-of-goofs | in review (closed test) | 1.0.0 | – | drop-and-merge puzzle; art+ads+Goofdex in |
+| 002 | Stack-a-Freak | stack-a-freak | in review (closed test) | 1.0.0 | – | crane tower stacker; art+ads in |
+| 003 | Moth to the Lamp | moth-to-the-lamp | in review (closed test) | 1.0.0 | – | endless flutter climber; art+ads in |
+| 004 | Snack Slasher | snack-slasher | in review (closed test) | 1.0.0 | – | swipe slicer; art+ads in |
+| 005 | Gobble Gus | gobble-gus | in review (closed test) | 1.0.0 | – | catch/dodge feeder; art+ads in |
+| 006 | Sort the Horde | sort-the-horde | in review (closed test) | 1.0.0 | – | swipe sorter; art+ads in |
+| 007 | Moon Chaos | moon-chaos | in review (closed test) | 1.0.0 | – | 3D lunar cleaning tycoon; sim+tests+greybox in |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`.
 Full metrics live in [docs/games-log.md](docs/games-log.md).
