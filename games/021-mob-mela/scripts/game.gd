@@ -267,7 +267,7 @@ func _build_world() -> void:
 
 
 func _build_track() -> void:
-	var road := Kit.box(Vector3(8.4, 0.4, TRACK_LEN + 60.0), Color(0.55, 0.85, 0.5))
+	var road := Kit.texbox(Vector3(8.4, 0.4, TRACK_LEN + 60.0), "tex1", Color(0.55, 0.85, 0.5), 8.0)
 	road.position = Vector3(0.0, -0.2, -TRACK_LEN / 2.0)
 	add_child(road)
 	for side: float in [-1.0, 1.0]:

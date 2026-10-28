@@ -225,7 +225,7 @@ func _build_world() -> void:
 	cam.fov = 45.0
 	add_child(cam)
 	# earth cross-section
-	var earth := Kit.box(Vector3(60.0, 80.0, 6.0), Color(0.52, 0.34, 0.24))
+	var earth := Kit.texbox(Vector3(60.0, 80.0, 6.0), "tex1", Color(0.52, 0.34, 0.24), 1.0)
 	earth.position = Vector3(0.0, -40.0, -3.2)
 	add_child(earth)
 	# grass lip + surface

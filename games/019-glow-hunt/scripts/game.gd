@@ -250,7 +250,7 @@ func _build_world() -> void:
 	cam.fov = 50.0
 	add_child(cam)
 	cam.look_at(Vector3.ZERO)
-	var floor_mesh := Kit.box(Vector3(ARENA * 2.0 + 2.0, 0.3, ARENA * 2.0 + 2.0), Color(0.13, 0.1, 0.3))
+	var floor_mesh := Kit.texbox(Vector3(ARENA * 2.0 + 2.0, 0.3, ARENA * 2.0 + 2.0), "tex1", Color(0.13, 0.1, 0.3), 1.0)
 	floor_mesh.position.y = -0.15
 	add_child(floor_mesh)
 	# neon grid lines + wall ring

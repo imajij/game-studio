@@ -257,15 +257,15 @@ func _build_world() -> void:
 func _make_wall_chunk(z: float) -> void:
 	var chunk := Node3D.new()
 	chunk.position.z = z
-	var floor_mesh := Kit.box(Vector3(7.4, 0.5, 10.0), Kit.TEAL.darkened(0.15), true)
+	var floor_mesh := Kit.texbox(Vector3(7.4, 0.5, 10.0), "tex2", Kit.TEAL.darkened(0.15), 1.0)
 	floor_mesh.position.y = -0.25
 	chunk.add_child(floor_mesh)
 	var ceil_mesh := Kit.box(Vector3(7.4, 0.5, 10.0), Kit.SUN, true)
 	ceil_mesh.position.y = CANYON_H + 0.25
 	chunk.add_child(ceil_mesh)
 	for side: float in [-1.0, 1.0]:
-		var wall := Kit.box(Vector3(0.6, CANYON_H + 1.0, 10.0),
-			(Kit.PINK if side < 0.0 else Kit.ORANGE).lightened(0.05 * (int(absf(z)) % 3)), true)
+		var wall := Kit.texbox(Vector3(0.6, CANYON_H + 1.0, 10.0), "tex1",
+			(Kit.PINK if side < 0.0 else Kit.ORANGE).lightened(0.05 * (int(absf(z)) % 3)), 1.0)
 		wall.position = Vector3(side * 4.0, CANYON_H * 0.5, 0.0)
 		chunk.add_child(wall)
 	add_child(chunk)

@@ -38,6 +38,33 @@ static func mat(color: Color, shaded: bool = false) -> StandardMaterial3D:
 	return _mats[key]
 
 
+## Flow-art textured material: loads res://assets/art/<name>.png when present
+## (dropped in by the Flow texture pass), else falls back to the flat color —
+## so every surface upgrades automatically the moment the art file lands.
+static func texmat(file: String, fallback: Color, tiles: float = 1.0) -> StandardMaterial3D:
+	var path := "res://assets/art/%s.png" % file
+	var key := "tex|%s|%s" % [path, tiles]
+	if not _mats.has(key):
+		var m := StandardMaterial3D.new()
+		m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		if ResourceLoader.exists(path):
+			m.albedo_texture = load(path)
+			m.uv1_scale = Vector3(tiles, tiles, tiles)
+		else:
+			m.albedo_color = fallback
+		_mats[key] = m
+	return _mats[key]
+
+
+static func texbox(size: Vector3, file: String, fallback: Color, tiles: float = 1.0) -> MeshInstance3D:
+	var mi := MeshInstance3D.new()
+	var mesh := BoxMesh.new()
+	mesh.size = size
+	mi.mesh = mesh
+	mi.material_override = texmat(file, fallback, tiles)
+	return mi
+
+
 static func box(size: Vector3, color: Color, shaded: bool = false) -> MeshInstance3D:
 	var mi := MeshInstance3D.new()
 	var mesh := BoxMesh.new()

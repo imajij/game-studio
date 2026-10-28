@@ -184,7 +184,7 @@ func _build_level() -> void:
 	var shaft_x: float = [-1.6, 0.0, 1.6][level % 3]
 	pot_x = shaft_x
 	# board back + side walls (physics kept in a z-slot by front/back panes)
-	var back := Kit.box(Vector3(10.0, 12.0, 0.3), Kit.CREAM)
+	var back := Kit.texbox(Vector3(10.0, 12.0, 0.3), "tex1", Kit.CREAM, 1.0)
 	back.position = Vector3(0.0, -1.0, -0.6)
 	add_child(back)
 	_wall(Vector3(0.3, 12.0, 1.2), Vector3(-4.2, -1.0, 0.0))
