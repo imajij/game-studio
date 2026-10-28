@@ -49,6 +49,19 @@ I'm going through this right now as a solo developer, so here's what actually wo
 
 Disclosure: I'm recruiting testers for my own small offline games right now — if you'd like to help, this form gets you the links: <FORM LINK>
 
-## Status
-- Reddit: not logged in on the "Your ego" ego-lite profile — needs Ajij to log in.
-- Quora: not logged in — needs Ajij to log in.
+## Status (2026-10-28)
+- **Quora — LIVE.** Answer by "AJIJ Uttam" on "How can a solo developer find 12 beta
+  testers for Google Play closed testing?" (not collapsed):
+  https://www.quora.com/How-can-a-solo-developer-find-12-beta-testers-for-Google-Play-closed-testing/answer/AJIJ-Uttam
+  One answer only — near-duplicate answers on sibling questions read as spam on Quora.
+- **Reddit — posted, but REMOVED BY REDDIT'S SITE-WIDE SPAM FILTER** (not the mods):
+  https://www.reddit.com/r/TestersCommunity/comments/1xhrucq/ — account
+  u/TourExpensive8757 was created the same day (1 karma). Polite modmail sent to
+  r/TestersCommunity asking for approval. r/AndroidClosedTesting NOT posted yet —
+  another filtered link-post would risk the account being flagged.
+  Plan: let the account age ~1 week and earn some comment karma (genuine comments /
+  testing others' apps), then repost to r/AndroidClosedTesting.
+- r/TestersCommunity asks devs to add their Google Group
+  (testers-community@googlegroups.com) to the closed track. Play allows ONE tester
+  method per track (email lists OR Google Groups) — switching would drop the
+  "Zintara testers" list and reset existing opt-ins, so we don't.
