@@ -58,7 +58,14 @@ previously built but never published — add them too."
 
 | App | Status |
 |-----|--------|
-| LifeTracker | build verification in progress |
-| Smaran | build verification in progress |
-| Tyohar Calendar | not started (fork after Smaran verified) |
+| LifeTracker | RELEASE-READY — com.zintara.life_tracker, signed 1.0.0 .aab (62 MB) in game-studio/builds/, emulator-verified end-to-end (onboarding→dashboard→nutrition→habits), Flow icon + listing + 4 real screenshots. Known cosmetic bug: dashboard greets "User" instead of saved name. |
+| Smaran | RELEASE-READY — com.zintara.smaran, signed 1.0.0 .aab (55 MB), emulator-verified (calendar→add event w/ reminder+color→agenda), Flow icon + listing + 4 real screenshots. |
+| Tyohar Calendar | not started (fork of Smaran, next) |
 | ikiru | deferred — backend |
+
+2026-10-28 (later): Flutter pipeline proven. Gotchas: flutter config --jdk-dir
+/opt/homebrew/opt/openjdk@17 (Java 25 breaks Gradle 8.14); pin ndkVersion
+"28.2.13676358"; `flutter build appbundle` wrapper fails on missing
+cmdline-tools — run `./gradlew bundleRelease` in android/ instead (works, signs
+correctly); AVD "Medium_Phone_API_37.0" exists for emulator screenshots via adb.
+Both apps queued for the Nov-3 Play window alongside the games.
