@@ -137,6 +137,102 @@ static func blobby(color: Color, radius: float = 0.3) -> Node3D:
 	return root
 
 
+## A properly modelled little character: two-tone rounded body, big face,
+## stub arms and feet, optional hat. hat: -1 none, 0 cap, 1 party cone,
+## 2 turban, 3 antenna, 4 headlamp, 5 hardhat.
+static func chara(color: Color, size: float = 1.0, hat: int = -1) -> Node3D:
+	var root := Node3D.new()
+	var s := size
+	var belly := color.lightened(0.25)
+	# body: squashed sphere
+	var body := sphere(0.34 * s, color, true)
+	body.scale = Vector3(1.0, 1.15, 0.92)
+	body.position.y = 0.38 * s
+	root.add_child(body)
+	var tummy := sphere(0.22 * s, belly, true)
+	tummy.scale = Vector3(1.0, 1.1, 0.6)
+	tummy.position = Vector3(0.0, 0.34 * s, -0.17 * s)
+	root.add_child(tummy)
+	# head
+	var head := sphere(0.26 * s, color, true)
+	head.position.y = 0.82 * s
+	root.add_child(head)
+	# arms + feet
+	for side: float in [-1.0, 1.0]:
+		var arm := sphere(0.1 * s, color.darkened(0.08), true)
+		arm.position = Vector3(side * 0.36 * s, 0.45 * s, 0.0)
+		root.add_child(arm)
+		var foot := sphere(0.12 * s, color.darkened(0.2), true)
+		foot.scale = Vector3(1.0, 0.6, 1.3)
+		foot.position = Vector3(side * 0.15 * s, 0.06 * s, -0.02 * s)
+		root.add_child(foot)
+	# face on -Z
+	for side: float in [-1.0, 1.0]:
+		var white := sphere(0.085 * s, Color.WHITE)
+		white.position = Vector3(side * 0.1 * s, 0.86 * s, -0.21 * s)
+		root.add_child(white)
+		var pupil := sphere(0.042 * s, INK)
+		pupil.position = Vector3(side * 0.1 * s, 0.86 * s, -0.28 * s)
+		root.add_child(pupil)
+		var brow := box(Vector3(0.09 * s, 0.025 * s, 0.02 * s), INK)
+		brow.position = Vector3(side * 0.1 * s, 0.97 * s, -0.24 * s)
+		brow.rotation.z = -side * 0.2
+		root.add_child(brow)
+	var cheek_l := sphere(0.035 * s, Color(1.0, 0.6, 0.6, 0.9))
+	cheek_l.position = Vector3(-0.17 * s, 0.79 * s, -0.2 * s)
+	root.add_child(cheek_l)
+	var cheek_r := sphere(0.035 * s, Color(1.0, 0.6, 0.6, 0.9))
+	cheek_r.position = Vector3(0.17 * s, 0.79 * s, -0.2 * s)
+	root.add_child(cheek_r)
+	var mouth := box(Vector3(0.1 * s, 0.025 * s, 0.02 * s), INK)
+	mouth.position = Vector3(0.0, 0.74 * s, -0.24 * s)
+	root.add_child(mouth)
+	match hat:
+		0:  # cap
+			var cap := sphere(0.2 * s, color.darkened(0.35), true)
+			cap.scale = Vector3(1.2, 0.6, 1.2)
+			cap.position.y = 1.02 * s
+			root.add_child(cap)
+			var brim := box(Vector3(0.3 * s, 0.03 * s, 0.2 * s), color.darkened(0.35))
+			brim.position = Vector3(0.0, 0.98 * s, -0.25 * s)
+			root.add_child(brim)
+		1:  # party cone
+			var party := cone(0.14 * s, 0.3 * s, CANDY[randi() % CANDY.size()])
+			party.position.y = 1.16 * s
+			root.add_child(party)
+		2:  # turban
+			var wrap := sphere(0.24 * s, SUN, true)
+			wrap.scale = Vector3(1.1, 0.7, 1.1)
+			wrap.position.y = 1.0 * s
+			root.add_child(wrap)
+			var jewel := sphere(0.05 * s, TEAL)
+			jewel.position = Vector3(0.0, 1.04 * s, -0.2 * s)
+			root.add_child(jewel)
+		3:  # antenna
+			var stem := cyl(0.015 * s, 0.22 * s, INK)
+			stem.position.y = 1.16 * s
+			root.add_child(stem)
+			var bulb := sphere(0.05 * s, MINT)
+			bulb.position.y = 1.28 * s
+			root.add_child(bulb)
+		4:  # headlamp
+			var band := box(Vector3(0.42 * s, 0.06 * s, 0.42 * s), INK)
+			band.position.y = 0.95 * s
+			root.add_child(band)
+			var lamp := sphere(0.07 * s, Color(1.0, 1.0, 0.7))
+			lamp.position = Vector3(0.0, 0.95 * s, -0.24 * s)
+			root.add_child(lamp)
+		5:  # hardhat
+			var hard := sphere(0.22 * s, SUN, true)
+			hard.scale = Vector3(1.15, 0.75, 1.15)
+			hard.position.y = 1.0 * s
+			root.add_child(hard)
+			var rim := cyl(0.27 * s, 0.03 * s, SUN)
+			rim.position.y = 0.94 * s
+			root.add_child(rim)
+	return root
+
+
 ## Bright gradient sky + warm sun + soft ambient. The vibrancy backbone.
 ## Returns the ProceduralSkyMaterial so games can recolor the sky live.
 static func sky(root: Node, top: Color, horizon: Color, ground: Color = Color(0.9, 0.8, 0.7)) -> ProceduralSkyMaterial:
@@ -247,6 +343,7 @@ static func button(text: String, size: int, bg: Color) -> Button:
 static func overlay(title_text: String, accent: Color) -> Dictionary:
 	var panel := Control.new()
 	panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	panel.visible = false
 	var dim := ColorRect.new()
 	dim.color = Color(0.08, 0.06, 0.14, 0.82)

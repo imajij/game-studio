@@ -7,7 +7,7 @@ extends Node3D
 enum State { RUNNING, DEAD }
 
 const LANES: Array[float] = [-2.1, 0.0, 2.1]
-const CANYON_H: float = 5.6
+const CANYON_H: float = 4.4
 const BASE_SPEED: float = 9.0
 const SPEED_PER_M: float = 0.035
 const MAX_SPEED: float = 22.0
@@ -232,7 +232,7 @@ func _build_world() -> void:
 	cam.fov = 62.0
 	add_child(cam)
 	player = Node3D.new()
-	player_body = Kit.blobby(Kit.TEAL, 0.3)
+	player_body = Kit.chara(Kit.TEAL, 1.0, 0)
 	player.add_child(player_body)
 	add_child(player)
 	player.position = Vector3(0.0, 0.0, 0.0)

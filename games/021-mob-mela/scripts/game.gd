@@ -128,7 +128,7 @@ func _set_count(new_count: int) -> void:
 	var visual := mini(count, VISUAL_CAP)
 	while blobs.size() < visual:
 		var b := Node3D.new()
-		var body := Kit.blobby(Kit.CANDY[blobs.size() % Kit.CANDY.size()], 0.2)
+		var body := Kit.chara(Kit.CANDY[blobs.size() % Kit.CANDY.size()], 0.62, 1 if blobs.size() % 5 == 0 else -1)
 		b.add_child(body)
 		center.add_child(b)
 		blobs.append(b)
@@ -147,7 +147,7 @@ func _start_battle() -> void:
 	enemy_root.visible = true
 	var visual := mini(enemy_count, VISUAL_CAP)
 	for i in visual:
-		var b := Kit.blobby(Kit.RED, 0.2)
+		var b := Kit.chara(Kit.RED, 0.62, -1)
 		var r := 0.42 * sqrt(float(i))
 		var a := float(i) * 2.4
 		b.position = Vector3(cos(a) * r, 0.0, sin(a) * r * 0.7)
@@ -369,6 +369,7 @@ func _build_ui() -> void:
 	layer.add_child(overlay.panel)
 	start_panel = Control.new()
 	start_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	start_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var hint := Kit.label("drag to steer your mob\ngreen gates grow it, red shrinks it\n\ntap to start", 50)
 	hint.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	hint.offset_top = 1280.0

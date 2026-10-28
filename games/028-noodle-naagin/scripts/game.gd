@@ -60,6 +60,7 @@ func _process(delta: float) -> void:
 			if s.ai and s.respawn <= 0.0:
 				_spawn_snake(s)
 			continue
+		s.grace = maxf(float(s.grace) - delta, 0.0)
 		_steer(s, delta)
 		_advance(s, delta)
 	_check_collisions()
@@ -124,7 +125,7 @@ func _check_collisions() -> void:
 		if s.dead:
 			continue
 		var head: Node3D = s.head
-		var shielded: bool = (not s.ai) and _now() < shield_until
+		var shielded: bool = float(s.grace) > 0.0 or ((not s.ai) and _now() < shield_until)
 		# diyas
 		for d: Dictionary in diyas.duplicate():
 			if head.position.distance_to(d.pos) < 0.55:
@@ -144,7 +145,7 @@ func _check_collisions() -> void:
 		for o: Dictionary in snakes:
 			if o.dead:
 				continue
-			var start_i := 2 if o == s else 0
+			var start_i := 6 if o == s else 0
 			var hit := false
 			for i in range(start_i, o.segs.size(), 2):
 				var seg: Node3D = o.segs[i]
@@ -271,7 +272,7 @@ func _build_world() -> void:
 	var colors: Array[Color] = [Kit.MINT, Kit.PINK, Kit.SUN, Kit.PURPLE, Kit.CORAL]
 	for i in 5:
 		var s := { "head": null, "heading": randf() * TAU, "color": colors[i],
-			"segs": [], "trail": [], "ai": i > 0, "respawn": 0.0, "dead": false }
+			"segs": [], "trail": [], "ai": i > 0, "respawn": 0.0, "dead": false, "grace": 1.5 }
 		var head := Node3D.new()
 		var ball := Kit.sphere(SEG_R * 1.25, colors[i], true)
 		ball.position.y = 0.0

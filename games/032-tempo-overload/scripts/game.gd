@@ -201,9 +201,20 @@ func _build_world() -> void:
 	add_child(cam)
 	# the tempo
 	tempo = Node3D.new()
-	var cab := Kit.box(Vector3(1.4, 1.1, 0.9), Kit.TEAL, true)
-	cab.position = Vector3(0.0, 0.85, -1.2)
+	var cab := Kit.box(Vector3(1.4, 0.9, 0.9), Kit.TEAL, true)
+	cab.position = Vector3(0.0, 0.75, -1.2)
 	tempo.add_child(cab)
+	var cab_top := Kit.capsule(0.44, 1.3, Kit.TEAL)
+	cab_top.rotation.z = PI / 2.0
+	cab_top.position = Vector3(0.0, 1.22, -1.2)
+	tempo.add_child(cab_top)
+	for hx: float in [-0.45, 0.45]:
+		var lamp := Kit.sphere(0.1, Color(1.0, 0.95, 0.6))
+		lamp.position = Vector3(hx, 0.75, -1.68)
+		tempo.add_child(lamp)
+	var driver := Kit.chara(Kit.SUN, 0.72, 2)
+	driver.position = Vector3(0.0, 1.05, -1.05)
+	tempo.add_child(driver)
 	var windshield := Kit.box(Vector3(1.2, 0.5, 0.08), Color(0.75, 0.92, 1.0), true)
 	windshield.position = Vector3(0.0, 1.1, -1.66)
 	tempo.add_child(windshield)
@@ -281,6 +292,7 @@ func _build_ui() -> void:
 	layer.add_child(overlay.panel)
 	start_panel = Control.new()
 	start_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	start_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var hint := Kit.label("steer gently — the stack remembers\npotholes are personal\n\ntap to drive", 48)
 	hint.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	hint.offset_top = 1280.0

@@ -202,7 +202,7 @@ func _build_world() -> void:
 	cam.fov = 58.0
 	add_child(cam)
 	player = Node3D.new()
-	player_body = Kit.blobby(Kit.ORANGE, 0.34)
+	player_body = Kit.chara(Kit.ORANGE, 1.1, 2)
 	player.add_child(player_body)
 	add_child(player)
 
@@ -289,6 +289,7 @@ func _build_ui() -> void:
 	layer.add_child(overlay.panel)
 	start_panel = Control.new()
 	start_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	start_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var hint := Kit.label("laddus = BIG · rocks = small\nsqueeze the gates, SMASH the wall\n\ntap to run", 48)
 	hint.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	hint.offset_top = 1280.0

@@ -216,7 +216,7 @@ func _build_world() -> void:
 	cam.fov = 60.0
 	add_child(cam)
 	player = Node3D.new()
-	player.add_child(Kit.blobby(Kit.MAGENTA, 0.3))
+	player.add_child(Kit.chara(Kit.MAGENTA, 1.0, 0))
 	stack_root = Node3D.new()
 	stack_root.position = Vector3(0.0, 0.35, 0.55)
 	player.add_child(stack_root)
@@ -298,6 +298,7 @@ func _build_ui() -> void:
 	layer.add_child(overlay.panel)
 	start_panel = Control.new()
 	start_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	start_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var hint := Kit.label("grab tiles — water takes one per step\nleftovers = multiplier cash\n\ntap to run", 48)
 	hint.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	hint.offset_top = 1280.0

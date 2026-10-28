@@ -198,24 +198,39 @@ func _build_object() -> void:
 
 
 func _build_rickshaw() -> void:
-	# body panels 5x3 grid, two sides + front, canopy, wheels
-	for side: float in [-0.8, 0.8]:
+	# proper auto proportions: green body shell, yellow canopy, slanted
+	# windshield, three wheels with fenders — every box is a washable panel
+	for side: float in [-0.72, 0.72]:
 		for ix in 4:
-			for iy in 3:
-				_panel(Vector3(-0.9 + ix * 0.6, 0.6 + iy * 0.5, side),
-					Vector3(0.58, 0.48, 0.1), Kit.SUN if iy == 2 else Kit.LIME)
+			for iy in 2:
+				_panel(Vector3(-0.8 + ix * 0.55, 0.55 + iy * 0.45, side),
+					Vector3(0.53, 0.43, 0.1), Kit.LIME)
+	# rear panel
 	for ix in 3:
-		for iy in 3:
-			_panel(Vector3(-1.25, 0.6 + iy * 0.5, -0.53 + ix * 0.53),
-				Vector3(0.1, 0.48, 0.51), Kit.LIME)
+		for iy in 2:
+			_panel(Vector3(1.0, 0.55 + iy * 0.45, -0.48 + ix * 0.48),
+				Vector3(0.1, 0.43, 0.46), Kit.LIME)
+	# slanted windshield frame
+	for ix in 3:
+		_panel(Vector3(-1.28 + ix * 0.06, 0.9 + ix * 0.28, 0.0),
+			Vector3(0.1, 0.3, 1.3), Kit.SKY.lightened(0.2) if ix == 1 else Kit.LIME)
+	# canopy: two angled rows meeting at a ridge
 	for ix in 4:
-		_panel(Vector3(-0.9 + ix * 0.6, 2.25, 0.0), Vector3(0.58, 0.12, 1.7), Kit.SUN)
-	for wheel_x: float in [-0.9, 0.9]:
-		for side: float in [-0.95, 0.95]:
-			for seg in 4:
-				var a := seg * TAU / 4.0
-				_panel(Vector3(wheel_x + cos(a) * 0.22, 0.35 + sin(a) * 0.22, side),
-					Vector3(0.22, 0.22, 0.1), Kit.INK.lightened(0.25))
+		_panel(Vector3(-0.85 + ix * 0.55, 1.62, 0.42), Vector3(0.53, 0.1, 0.5), Kit.SUN)
+		_panel(Vector3(-0.85 + ix * 0.55, 1.68, -0.1), Vector3(0.53, 0.1, 0.5), Kit.SUN)
+	# headlight + grill
+	_panel(Vector3(-1.42, 0.62, 0.0), Vector3(0.12, 0.3, 0.5), Kit.CREAM)
+	# three wheels: front centre + two rear, with fenders
+	for seg in 4:
+		var a := seg * TAU / 4.0
+		_panel(Vector3(-1.25 + cos(a) * 0.2, 0.3 + sin(a) * 0.2, 0.0),
+			Vector3(0.2, 0.2, 0.12), Kit.INK.lightened(0.25))
+	for side: float in [-0.8, 0.8]:
+		for seg in 4:
+			var a := seg * TAU / 4.0
+			_panel(Vector3(0.85 + cos(a) * 0.22, 0.32 + sin(a) * 0.22, side),
+				Vector3(0.22, 0.22, 0.1), Kit.INK.lightened(0.25))
+		_panel(Vector3(0.85, 0.64, side), Vector3(0.6, 0.12, 0.14), Kit.TEAL)
 
 
 func _build_statue() -> void:

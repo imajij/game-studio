@@ -6,7 +6,7 @@ extends Node3D
 ## Rewarded ad = instant supply crate. Interstitial after each storm result.
 
 const FLOOR_H: float = 1.7
-const ROOM_W: float = 5.0
+const ROOM_W: float = 4.0
 const STORM_PERIOD: float = 45.0
 const STORM_SECONDS: float = 4.0
 const OFFLINE_CAP_SEC: float = 4.0 * 3600.0
@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 	# camera follows the bunker depth with a storm wobble
 	var target_y := 1.2 - floors * FLOOR_H * 0.42
 	cam_y = lerpf(cam_y, target_y, 3.0 * delta)
-	cam.position = Vector3(randf_range(-shake, shake), cam_y + randf_range(-shake, shake), 11.5)
+	cam.position = Vector3(randf_range(-shake, shake), cam_y + randf_range(-shake, shake), 16.5)
 	# idle workers bob
 	for w: Node3D in workers:
 		w.position.x = wrapf(w.position.x + delta * w.get_meta("speed"), -ROOM_W * 0.4, ROOM_W * 0.4)
@@ -221,11 +221,11 @@ func _notification(what: int) -> void:
 func _build_world() -> void:
 	sky_mat = Kit.sky(self, Kit.SKY, Color(1.0, 0.85, 0.7), Color(0.55, 0.4, 0.3))
 	cam = Camera3D.new()
-	cam.position = Vector3(0.0, 1.0, 11.5)
+	cam.position = Vector3(0.0, 1.0, 16.5)
 	cam.fov = 45.0
 	add_child(cam)
 	# earth cross-section
-	var earth := Kit.texbox(Vector3(60.0, 80.0, 6.0), "tex1", Color(0.52, 0.34, 0.24), 1.0)
+	var earth := Kit.texbox(Vector3(60.0, 80.0, 6.0), "tex1", Color(0.52, 0.34, 0.24), 7.0)
 	earth.position = Vector3(0.0, -40.0, -3.2)
 	add_child(earth)
 	# grass lip + surface
@@ -291,7 +291,7 @@ func _make_room(index: int) -> Node3D:
 	var lamp := Kit.sphere(0.14, Kit.SUN)
 	lamp.position = Vector3(0.0, FLOOR_H * 0.28, 0.6)
 	root.add_child(lamp)
-	var worker := Kit.blobby(Kit.CANDY[index % Kit.CANDY.size()], 0.2)
+	var worker := Kit.chara(Kit.CANDY[index % Kit.CANDY.size()], 0.75, 5)
 	worker.position = Vector3(randf_range(-1.0, 1.0), -(FLOOR_H - 0.25) / 2.0 + 0.2, 0.6)
 	worker.set_meta("speed", randf_range(0.4, 0.9) * (1.0 if randf() < 0.5 else -1.0))
 	root.add_child(worker)

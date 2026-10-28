@@ -275,7 +275,7 @@ func _build_world() -> void:
 				wall.rotation.y = PI / 2.0
 				wall.position.x = ARENA + 1.0
 		add_child(wall)
-	player = Kit.blobby(Kit.TEAL, 0.32)
+	player = Kit.chara(Kit.TEAL, 1.05, 4)
 	player_cone = _make_cone(Color(0.2, 0.95, 0.9, 0.22), CONE_RANGE, CONE_ANGLE_DEG)
 	player.add_child(player_cone)
 	add_child(player)
@@ -304,7 +304,7 @@ func _spawn_round() -> void:
 	var count := 3 + round_number
 	var speed := 1.6 + round_number * 0.22
 	for i in count:
-		var node := Kit.blobby(Kit.CANDY[i % Kit.CANDY.size()], 0.3)
+		var node := Kit.chara(Kit.CANDY[i % Kit.CANDY.size()], 1.0, 3)
 		node.position = _random_point()
 		var cone := _make_cone(Color(1.0, 0.5, 0.2, 0.16), BOT_CONE_RANGE, BOT_CONE_ANGLE)
 		node.add_child(cone)

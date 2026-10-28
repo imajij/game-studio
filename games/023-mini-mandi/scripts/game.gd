@@ -84,7 +84,7 @@ func _move_player(delta: float) -> void:
 		for i in stack_root.get_child_count():
 			var crate := stack_root.get_child(i) as Node3D
 			crate.rotation.x = sin(Time.get_ticks_msec() / 90.0 + i) * 0.08 * v.length()
-	cam.position = cam.position.lerp(player.position + Vector3(0.0, 11.0, 8.5), 5.0 * delta)
+	cam.position = cam.position.lerp(player.position + Vector3(0.0, 15.0, 11.5), 5.0 * delta)
 	cam.look_at(player.position + Vector3(0.0, 0.5, -1.0))
 	# near stall: unload
 	if not carry.is_empty() and player.position.distance_to(stall_pos) < 1.8:
@@ -127,7 +127,7 @@ func _tick_customers(delta: float) -> void:
 	customer_timer -= delta
 	if customer_timer <= 0.0 and customers.size() < 5:
 		customer_timer = CUSTOMER_EVERY
-		var c := Kit.blobby(Kit.CANDY[randi() % Kit.CANDY.size()], 0.26)
+		var c := Kit.chara(Kit.CANDY[randi() % Kit.CANDY.size()], 0.9, [1, 2, -1, 0][randi() % 4])
 		c.position = Vector3(randf_range(-2.0, 2.0), 0.0, 7.5)
 		add_child(c)
 		customers.append({ "node": c, "state": "walk", "need": randi_range(1, 3), "timer": 0.0 })
@@ -244,7 +244,7 @@ func _restock_visual() -> void:
 func _build_world() -> void:
 	Kit.sky(self, Kit.SKY, Color(1.0, 0.88, 0.6), Color(0.55, 0.8, 0.45))
 	cam = Camera3D.new()
-	cam.position = Vector3(0.0, 11.0, 8.5)
+	cam.position = Vector3(0.0, 15.0, 11.5)
 	cam.fov = 52.0
 	add_child(cam)
 	cam.look_at(Vector3.ZERO)
@@ -255,7 +255,7 @@ func _build_world() -> void:
 	path.position = Vector3(2.0, -0.19, 0.0)
 	add_child(path)
 	player = Node3D.new()
-	player.add_child(Kit.blobby(Kit.TEAL, 0.3))
+	player.add_child(Kit.chara(Kit.TEAL, 1.0, 0))
 	stack_root = Node3D.new()
 	player.add_child(stack_root)
 	add_child(player)
@@ -293,8 +293,8 @@ func _build_world() -> void:
 		patches.append({ "node": patch, "pos": pos, "veggies": [], "timer": 1.0, "unlocked": i == 0 })
 	_spawn_pad("patch2", 120, Vector3(-3.5, 0.0, -1.2))
 	_spawn_pad("patch3", 420, Vector3(-3.0, 0.0, 2.2))
-	_spawn_pad("cap", 80, Vector3(1.0, 0.0, 4.0))
-	_spawn_pad("speed", 60, Vector3(3.5, 0.0, 4.0))
+	_spawn_pad("cap", 80, Vector3(0.2, 0.0, 4.2))
+	_spawn_pad("speed", 60, Vector3(4.6, 0.0, 2.6))
 
 
 func _spawn_pad(key: String, cost: int, pos: Vector3) -> void:
@@ -305,8 +305,8 @@ func _spawn_pad(key: String, cost: int, pos: Vector3) -> void:
 	node.add_child(disc)
 	var text := Label3D.new()
 	text.text = "%s\n₹%d" % [{ "patch2": "PATCH", "patch3": "PATCH", "cap": "BASKET+", "speed": "SPEED+" }[key], cost]
-	text.font_size = 120
-	text.pixel_size = 0.012
+	text.font_size = 76
+	text.pixel_size = 0.009
 	text.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	text.position.y = 1.1
 	text.outline_size = 28
