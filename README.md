@@ -25,6 +25,21 @@ All conventions live in [CLAUDE.md](CLAUDE.md) — read that first.
 | 015 | Guess the Sound or Get Yeeted | guess-the-sound | closed test (live) | 1.0.0 | – | original synth audio quiz, elimination |
 | 016 | Bazaar Tower Defense | bazaar-defense | release-ready (Play slot ~Nov 3) | 1.0.0 | – | 3 evolving units, endless waves |
 | 017 | Meme Reset 2014 | meme-reset | release-ready (Play slot ~Nov 3) | 1.0.0 | – | CRT brick-smasher, era-card collection |
+| 018 | Storm Shelter | storm-shelter | built (publish ~Nov 3 slot) | 1.0.0 | – | shelter-upgrade storm tycoon, 3D |
+| 019 | Glow Hunt | glow-hunt | built (publish ~Nov 3 slot) | 1.0.0 | – | top-down cone fog-of-war light tag, 3D |
+| 020 | Gravity Gully | gravity-gully | built (publish ~Nov 3 slot) | 1.0.0 | – | dual-surface flip runner, 3D |
+| 021 | Mob Mela | mob-mela | built (publish ~Nov 3 slot) | 1.0.0 | – | crowd gates + push battle, 3D |
+| 022 | Pin Panic | pin-panic | built (publish ~Nov 3 slot) | 1.0.0 | – | pull-the-pin physics vats, 3D |
+| 023 | Mini Mandi | mini-mandi | built (publish ~Nov 3 slot) | 1.0.0 | – | arcade-idle harvest/carry/sell, 3D |
+| 024 | Nom Hole | nom-hole | built (publish ~Nov 3 slot) | 1.0.0 | – | hole.io town eater vs AI, 3D |
+| 025 | Horn OK Jam | horn-ok-jam | built (publish ~Nov 3 slot) | 1.0.0 | – | directional parking unjam, 3D |
+| 026 | Tile Toofan | tile-toofan | built (publish ~Nov 3 slot) | 1.0.0 | – | tile stack + water planks + xN runway, 3D |
+| 027 | Laddu Giant | laddu-giant | built (publish ~Nov 3 slot) | 1.0.0 | – | size runner + wall smash, 3D |
+| 028 | Noodle Naagin | noodle-naagin | built (publish ~Nov 3 slot) | 1.0.0 | – | io snake vs AI noodles, 3D |
+| 029 | Rang Tubes 3D | rang-tubes | built (publish ~Nov 3 slot) | 1.0.0 | – | glass-tube ball sort, 3D |
+| 030 | Toda Todi | toda-todi | built (publish ~Nov 3 slot) | 1.0.0 | – | cannon fort demolition, 3D |
+| 031 | Dhulai Deluxe | dhulai-deluxe | built (publish ~Nov 3 slot) | 1.0.0 | – | power-wash panel ASMR, 3D |
+| 032 | Tempo Overload | tempo-overload | built (publish ~Nov 3 slot) | 1.0.0 | – | cargo sway-stack driving, 3D |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`.
 Full metrics live in [docs/games-log.md](docs/games-log.md).

@@ -22,6 +22,21 @@ Metrics come from Play Console + AdMob (pasted in after launch).
 | Guess the Sound or Get Yeeted | closed test (live) | – | – | – | – | – | – | – | – | – |
 | Bazaar Tower Defense | release-ready (Play slot ~Nov 3) | – | – | – | – | – | – | – | – | – |
 | Meme Reset 2014 | release-ready (Play slot ~Nov 3) | – | – | – | – | – | – | – | – | – |
+| Storm Shelter | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Glow Hunt | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Gravity Gully | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Mob Mela | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Pin Panic | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Mini Mandi | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Nom Hole | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Horn OK Jam | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Tile Toofan | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Laddu Giant | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Noodle Naagin | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Rang Tubes 3D | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Toda Todi | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Dhulai Deluxe | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
+| Tempo Overload | built (publish ~Nov 3 slot) | – | – | – | – | – | – | – | – | – |
 
 Statuses: `prototype` → `internal test` → `closed test` → `production` → `killed`
 
