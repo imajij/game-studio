@@ -79,3 +79,10 @@ Disclosure: I'm recruiting testers for my own small offline games right now — 
 - Skip: r/playmygame (needs instantly playable public link), r/androidapps (bans tester requests).
 - Google Group zintara-testers@googlegroups.com now the join method (welcome message carries all
   15 opt-in links); posts reference the group address, which these subs allow.
+
+## Update 2026-10-29 (evening)
+- Group switch approved on all 15 games; group at 25 members (5 self-joined via the link).
+- Reminder with all 15 links + per-game progress posted to the group.
+- r/AndroidClosedTesting 1xi8uiu still removed by Reddit, no modmail answer yet. Account karma 1.
+- u/Icy-Eye-96 says they filled the form (probably the siret.hallap row) and wants a
+  reciprocal test of "Spermwave" — waiting on Ajij; don't send them his email without consent.
