@@ -65,3 +65,17 @@ Disclosure: I'm recruiting testers for my own small offline games right now — 
   (testers-community@googlegroups.com) to the closed track. Play allows ONE tester
   method per track (email lists OR Google Groups) — switching would drop the
   "Zintara testers" list and reset existing opt-ins, so we don't.
+
+## Update 2026-10-29
+- r/TestersCommunity post (1xhrucq) was APPROVED by mods and is live. Edited to remove an
+  inaccurate "no data collection" line (the games carry AdMob, which collects device IDs) →
+  now "No accounts or sign-up, the games play offline, and the ads are family-safe."
+  Never claim "no data collection" for the games again.
+- r/AndroidClosedTesting post (1xi8uiu) — removed by Reddit's spam filter instantly (account
+  11h old, 1 karma). Modmail sent asking for approval (worked for TestersCommunity).
+- Held back: r/alphaandbetausers (51k), r/TestMyApp (33k), r/betatests (needs ≥24h + ≥2 karma),
+  r/googleplaydeveloper (weekly tester thread only). Post once the account is older and has a
+  little karma — repeated filtered posts risk a shadow-ban.
+- Skip: r/playmygame (needs instantly playable public link), r/androidapps (bans tester requests).
+- Google Group zintara-testers@googlegroups.com now the join method (welcome message carries all
+  15 opt-in links); posts reference the group address, which these subs allow.
